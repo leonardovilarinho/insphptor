@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+   backupGlobals="false"
+   backupStaticAttributes="false"
+   bootstrap="vendor/autoload.php"
+   colors="true"
+   convertErrorsToExceptions="true"
+   convertNoticesToExceptions="true"
+   convertWarningsToExceptions="true"
+   processIsolation="false"
+   stopOnFailure="false"
+>
+
+   <testsuites>
+      <testsuite name="Social Metrics Tests">
+         <directory suffix="Test.php">./tests/SocialMetrics</directory>
+      </testsuite>
+
+      <testsuite name="Source Metrics Tests">
+         <directory suffix="Test.php">./tests/SourceMetrics</directory>
+      </testsuite>
+
+      <testsuite name="Program Tests">
+         <directory suffix="Test.php">./tests/Program</directory>
+      </testsuite>
+
+       <testsuite name="Export Services Tests">
+         <directory suffix="Test.php">./tests/ExportServices</directory>
+      </testsuite>
+   </testsuites>
+
+   <filter>
+      <whitelist processUncoveredFilesFromWhitelist="true">
+         <directory suffix=".php">./source</directory>
+      </whitelist>
+   </filter> 
+
+   <logging>
+      <log type="coverage-html" target="./coverage" lowUpperBound="50" highLowerBound="70"/>
+   </logging>
+
+</phpunit>

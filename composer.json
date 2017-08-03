@@ -1,0 +1,34 @@
+{
+    "name": "leonardovilarinho/insphptor",
+    "type": "framework",
+    "license": "MITS",
+    "authors": [
+        {
+            "name": "Leonardo Vilarinho",
+            "email": "leonardo-s@outlook.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Insphptor\\": "source/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Insphptor\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "webmozart/console": "~1.0.0-beta5",
+        "kevinlebrun/colors.php": "0.*",
+        "kzykhys/git": "dev-master",
+        "symfony/finder": "~v3.3.2",
+        "webmozart/json": "~1.2.2",
+        "hassankhan/config": "~0.10.0",
+        "gemorroj/syntax": "~2.0.0",
+        "zeptech/annotations": "1.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    }
+}

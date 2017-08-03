@@ -1,0 +1,10 @@
+#!/usr/bin/env php
+<?php
+
+use Webmozart\Console\ConsoleApplication;
+use Insphptor\Program\InsphptorConfig;
+
+require_once __DIR__.'/../vendor/autoload.php';
+
+$cli = new ConsoleApplication(new InsphptorConfig());
+$cli->run();
