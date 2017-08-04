@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+use Webmozart\Console\ConsoleApplication;
+use Insphptor\Program\Application;
+
+require_once __DIR__.'/./vendor/autoload.php';
+
+require_once __DIR__.'/./source/globals.php';
+
+$cli = new ConsoleApplication(new Application());
+$cli->run();

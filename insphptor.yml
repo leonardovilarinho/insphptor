@@ -1,0 +1,13 @@
+ignore:
+  - vendor
+  - tests
+  - coverage
+  - .phpintel
+
+ranking: 5
+
+hide:
+  - interface
+
+extensions:
+  - php
