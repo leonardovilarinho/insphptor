@@ -1,10 +1,11 @@
+ranking: 5
+export: json
+
 ignore:
   - vendor
   - tests
   - coverage
   - .phpintel
-
-ranking: 5
 
 hide:
   - interface

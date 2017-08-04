@@ -11,21 +11,14 @@ class RunCommand
 {
     private $classes = [];
 
-    private $metrics = [
-        '\Insphptor\Metrics\DetourMetric',
-    ];
-
-    private $components = [
-        '\Insphptor\Components\NameComponent',
-        '\Insphptor\Components\MethodsComponent',
-        '\Insphptor\Components\AttributesComponent',
-        '\Insphptor\Components\TypeComponent',
-        '\Insphptor\Components\NamespaceComponent',
-    ];
-
     public function handle(Args $args, IO $io, Command $command)
     {
         $io->writeLine( 'Loading files...' );
         return 0;
+    }
+
+    public function export(Args $args, IO $io)
+    {
+        $io->writeLine( 'Loading json...' );
     }
 }

@@ -31,6 +31,10 @@ class Application extends DefaultApplicationConfig
             ->beginCommand('run')
                 ->setDescription('Run analizer metrics')
                 ->setHandler(new \Insphptor\Program\Commands\RunCommand())
+                ->beginSubCommand('export')
+                    ->setHandlerMethod('export')
+                    ->setDescription('Export result in ' . config()['export'] . ' file')
+                ->end()
             ->end()
         ;
     }
