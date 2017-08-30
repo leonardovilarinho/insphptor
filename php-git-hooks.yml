@@ -10,13 +10,13 @@ pre-commit:
         phpcs:
             enabled: true
             standard: PSR2
-            ignore: ''
+            ignore: tests/
         php-cs-fixer:
-            enabled: true
+            enabled: false
             levels:
                 psr0: false
                 psr1: false
-                psr2: true
+                psr2: false
                 symfony: false
             options: null
         phpunit:
@@ -25,7 +25,7 @@ pre-commit:
             options: null
             strict-coverage:
                 enabled: true
-                minimum: !!float 70
+                minimum: !!float 0
             guard-coverage:
                 enabled: true
                 message: 'WARNING!!, your code coverage is lower.'
@@ -33,21 +33,9 @@ pre-commit:
         right-message: 'HEY, GOOD JOB!!'
         error-message: 'FIX YOUR FUCKING CODE!!'
 commit-msg:
-    enabled: true
-    regular-expression: '[#[0-9]{2,7}]'
+    enabled: false
+    regular-expression: ''
 pre-push:
     enabled: true
     execute:
-        phpunit:
-            enabled: true
-            random-mode: false
-            options: null
-            strict-coverage:
-                enabled: true
-                minimum: !!float 70
-            guard-coverage:
-                enabled: true
-                message: 'WARNING!!, your code coverage is lower.'
-    message:
-        right-message: 'PUSH IT!!'
-        error-message: 'YOU CAN NOT PUSH CODE!!'
+        enabled: false
