@@ -36,6 +36,6 @@ commit-msg:
     enabled: false
     regular-expression: ''
 pre-push:
-    enabled: true
+    enabled: false
     execute:
         enabled: false
