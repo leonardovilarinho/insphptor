@@ -1,6 +1,6 @@
 <?php
 
-namespace VertuPhp\Tests;
+namespace Insphptor;
 
 use PHPUnit\Framework\TestCase;
 

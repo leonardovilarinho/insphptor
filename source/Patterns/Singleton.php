@@ -4,7 +4,7 @@ namespace Insphptor\Patterns;
 
 class Singleton
 {
-	public static function instance()
+    public static function instance() : Singleton
     {
         static $instance = null;
         if (null === $instance) {

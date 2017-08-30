@@ -1,7 +1,7 @@
 ranking: 5
 export: json
 
-ignore:
+ignored:
   - vendor
   - tests
   - coverage

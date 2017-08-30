@@ -6,11 +6,11 @@ use Webmozart\Console\Config\DefaultApplicationConfig;
 
 class Application extends DefaultApplicationConfig
 {
-    protected function configure()
+    protected function configure() : int
     {
         parent::configure();
 
-        $app = Core::instance();
+        Core::instance();
 
         $this
             ->setDisplayName(
@@ -19,24 +19,23 @@ class Application extends DefaultApplicationConfig
                 color('Leonardo Vilarinho')->bold
             )
             ->setName('Insphptor')
-            ->setVersion('1.0.0')
-        ;
+            ->setVersion('1.0.0');
 
         $this->defineCommands();
+
+        return 0;
     }
 
     private function defineCommands()
     {
         $this
             ->beginCommand('run')
-                ->setDescription('Run analizer metrics')
-                ->setHandler(new \Insphptor\Program\Commands\RunCommand())
-                ->beginSubCommand('export')
-                    ->setHandlerMethod('export')
-                    ->setDescription('Export result in ' . config()['export'] . ' file')
-                ->end()
+            ->setDescription('Run analizer metrics')
+            ->setHandler(new \Insphptor\Program\Commands\RunCommand())
+            ->beginSubCommand('export')
+            ->setHandlerMethod('export')
+            ->setDescription('Export result in ' . config()['export'] . ' file')
             ->end()
-        ;
+            ->end();
     }
-
 }

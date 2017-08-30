@@ -1,19 +1,14 @@
 <?php
 
-namespace VertuPhp\Tests\Program;
+namespace Insphptor\TestBase;
 
-use VertuPhp\Tests\TestBase;
-use VertuPhp\Example;
+use Insphptor\TestBase;
 
 class BasicUsageProgramTest extends TestBase
 {
 	public function testMyFirstTest()
 	{
-		$this->assertEquals(Example::calculate(), 4);
+		$this->assertEquals(2 + 2, 4);
 	}
 
-	public function testMyTwoTest()
-	{
-		$this->assertEquals(Example::calculateTwo(), 2);
-	}
 }
