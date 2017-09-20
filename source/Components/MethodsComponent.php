@@ -33,10 +33,11 @@ class MethodsComponent implements IComponent
                         }
                     }
                 } elseif (in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {
-                    $visibility = str_replace('T_', '', token_name($value[0]));
+                    if($visibility == '')
+                        $visibility = str_replace('T_', '', token_name($value[0]));
                 }
 
-                if (in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {
+                if (($key + 1) >= count($tokenize) or in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {
                     if ($count > 1) {
                         $val[$count - 1]['content'] = $content;
                     }

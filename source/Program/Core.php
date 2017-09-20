@@ -24,6 +24,7 @@ class Core extends Singleton
         $this->optimizeConfiguration('ignored');
         $this->optimizeConfiguration('extensions');
         $this->optimizeConfiguration('hide');
+        $this->optimizeConfiguration('views');
 
         self::$config['project'] = getcwd();
     }

@@ -38,4 +38,16 @@ commit-msg:
 pre-push:
     enabled: false
     execute:
-        enabled: false
+        phpunit:
+            enabled: false
+            random-mode: false
+            options: null
+            strict-coverage:
+                enabled: false
+                minimum: null
+            guard-coverage:
+                enabled: false
+                message: null
+    message:
+        right-message: null
+        error-message: null

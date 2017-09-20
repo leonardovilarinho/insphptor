@@ -10,6 +10,8 @@ use Symfony\Component\Finder\Finder;
 
 class RunCommand extends Command
 {
+    private $ga;
+
     public function handle(Args $args) : int
     {
         $this->showSplashScreen();
@@ -45,9 +47,10 @@ class RunCommand extends Command
 
         echo EOL . ClassesRepository::instance()->count() . ' classes found!' . EOL;
 
-        $ga = new GeneralAnalyzer(ClassesRepository::instance());
-        $ga->generateComponents();
-        $ga->showComponents();
+        $this->ga = new GeneralAnalyzer(ClassesRepository::instance());
+        $this->ga->generateComponents();
+        $this->ga->calculateSourceMetrics();
+        $this->ga->showComponents();
 
         return 0;
     }
@@ -55,7 +58,19 @@ class RunCommand extends Command
     public function export(Args $args) : int
     {
         $this->handle($args);
-        $io->writeLine('Loading json...');
+        echo 'Loading json...' . EOL;
+
+        $this->ga->generateJson($args->getArgument('view'));
+
+        if($args->getOption('open')) {
+            $view = $args->getArgument('view');
+            $p = config()['views'][  $view ];
+            $p .= substr(config()['views'][$view], 0, -1) == '/' ? '' : '/';
+
+            $path = config()['project'] . '/' . $p;
+            echo color('Serving the result in http://localhost:8000')->bold;
+            exec('php -S 0.0.0.0:8000 -t ' . $path );
+        }
 
         return 0;
     }

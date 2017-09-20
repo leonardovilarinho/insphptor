@@ -3,6 +3,8 @@
 namespace Insphptor\Program;
 
 use Webmozart\Console\Config\DefaultApplicationConfig;
+use Webmozart\Console\Api\Args\Format\Argument;
+use Webmozart\Console\Api\Args\Format\Option;
 
 class Application extends DefaultApplicationConfig
 {
@@ -30,12 +32,14 @@ class Application extends DefaultApplicationConfig
     {
         $this
             ->beginCommand('run')
-            ->setDescription('Run analizer metrics')
-            ->setHandler(new \Insphptor\Program\Commands\RunCommand())
-            ->beginSubCommand('export')
-            ->setHandlerMethod('export')
-            ->setDescription('Export result in ' . config()['export'] . ' file')
-            ->end()
+                ->setDescription('Run analizer metrics')
+                ->setHandler(new \Insphptor\Program\Commands\RunCommand())
+                ->beginSubCommand('export')
+                    ->setHandlerMethod('export')
+                    ->setDescription('Export result in ' . config()['export'] . ' file')
+                    ->addArgument('view', Argument::OPTIONAL, 'The view system', 'default')
+                    ->addOption('open', 'o', Option::BOOLEAN, 'Open server with result in view')
+                ->end()
             ->end();
     }
 }

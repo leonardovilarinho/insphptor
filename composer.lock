@@ -4,65 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d222679b258cc95679ef0fd45266d44b",
-    "content-hash": "53e8c90cc327b43ceceab31691fb9e3a",
+    "hash": "be7ad3695918a61e1f9d10e10a4deb70",
+    "content-hash": "3fecfda3f46b88831d1654a2eae079b7",
     "packages": [
-        {
-            "name": "duncan3dc/fork-helper",
-            "version": "2.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/duncan3dc/fork-helper.git",
-                "reference": "99d2992d610e736e72bb930aa61d939c9d33c746"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/duncan3dc/fork-helper/zipball/99d2992d610e736e72bb930aa61d939c9d33c746",
-                "reference": "99d2992d610e736e72bb930aa61d939c9d33c746",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0"
-            },
-            "require-dev": {
-                "duncan3dc/object-intruder": "^0.1.0",
-                "mockery/mockery": "^0.9.9",
-                "phpunit/phpunit": "^6.0"
-            },
-            "suggest": {
-                "ext-pcntl": "Needed to allow multi-threaded execution of code",
-                "ext-shmop": "If pcntl is present then shmop is required to handle errors"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "duncan3dc\\Forker\\": "src/",
-                    "duncan3dc\\ForkerTests\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Craig Duncan",
-                    "email": "git@duncanc.co.uk",
-                    "homepage": "https://github.com/duncan3dc",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Simple class to fork processes in PHP and allow multi-threading",
-            "homepage": "https://github.com/duncan3dc/fork-helper",
-            "keywords": [
-                "control",
-                "fork",
-                "multi-threading",
-                "pcntl",
-                "process"
-            ],
-            "time": "2017-07-11 20:14:23"
-        },
         {
             "name": "gemorroj/syntax",
             "version": "2.0.0",
@@ -1009,46 +953,6 @@
             ],
             "description": "A robust cross-platform utility for normalizing, comparing and modifying file paths.",
             "time": "2015-12-17 08:42:14"
-        },
-        {
-            "name": "zeptech/annotations",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pgraham/php-annotations.git",
-                "reference": "9cd042daa9ace184d04b49f0605edf73f19a9c71"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pgraham/php-annotations/zipball/9cd042daa9ace184d04b49f0605edf73f19a9c71",
-                "reference": "9cd042daa9ace184d04b49f0605edf73f19a9c71",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "zpt\\anno": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Philip Graham",
-                    "email": "philip@zeptech.ca"
-                }
-            ],
-            "description": "DOC Block annotation parsing for PHP",
-            "homepage": "https://github.com/pgraham/php-annotations",
-            "keywords": [
-                "annotations"
-            ],
-            "time": "2013-05-29 02:35:23"
         }
     ],
     "packages-dev": [
@@ -1480,6 +1384,62 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
+        },
+        {
+            "name": "duncan3dc/fork-helper",
+            "version": "2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/duncan3dc/fork-helper.git",
+                "reference": "99d2992d610e736e72bb930aa61d939c9d33c746"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/duncan3dc/fork-helper/zipball/99d2992d610e736e72bb930aa61d939c9d33c746",
+                "reference": "99d2992d610e736e72bb930aa61d939c9d33c746",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "duncan3dc/object-intruder": "^0.1.0",
+                "mockery/mockery": "^0.9.9",
+                "phpunit/phpunit": "^6.0"
+            },
+            "suggest": {
+                "ext-pcntl": "Needed to allow multi-threaded execution of code",
+                "ext-shmop": "If pcntl is present then shmop is required to handle errors"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "duncan3dc\\Forker\\": "src/",
+                    "duncan3dc\\ForkerTests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Craig Duncan",
+                    "email": "git@duncanc.co.uk",
+                    "homepage": "https://github.com/duncan3dc",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple class to fork processes in PHP and allow multi-threading",
+            "homepage": "https://github.com/duncan3dc/fork-helper",
+            "keywords": [
+                "control",
+                "fork",
+                "multi-threading",
+                "pcntl",
+                "process"
+            ],
+            "time": "2017-07-11 20:14:23"
         },
         {
             "name": "fiunchinho/phpunit-randomizer",

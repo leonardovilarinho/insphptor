@@ -1,14 +1,22 @@
 ranking: 5
+
 export: json
+
+name: insphptor project
 
 ignored:
   - vendor
   - tests
   - coverage
   - .phpintel
+  - freaks
 
 hide:
   - interface
 
 extensions:
   - php
+
+views:
+  default: ../vue/
+  overview: ../vue-high/

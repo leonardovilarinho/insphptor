@@ -41,9 +41,7 @@ class AnalyzedClass
         foreach ($array as $key => $value) {
             if (!in_array($key, ['token', 'filename'])) {
                 if (is_array($value)) {
-                    if (in_array($key, ['content'])) {
-                        echo $prefix . color('length')->bold . ' = ' . count($value) . EOL;
-                    } elseif (count($value) > 0) {
+                    if (!in_array($key, ['content'])) {
                         echo color($key)->magenta . EOL;
                         $this->print(TAB, $value);
                     }
@@ -62,8 +60,25 @@ class AnalyzedClass
         $this->info[$name] = $value;
     }
 
+    public function pushMetric(string $name, $value)
+    {
+        $this->info['metrics'][$name] = $value;
+    }
+
     public function __toString() : string
     {
         return $this->info['filename'];
+    }
+
+    public function toArray() : array
+    {
+        $array = $this->info;
+        unset($array['token']);
+
+        foreach ($array['methods'] as $key => $value) {
+            unset($array['methods'][$key]['content']);
+        }
+
+        return $array;
     }
 }

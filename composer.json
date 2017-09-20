@@ -42,7 +42,6 @@
         "symfony/finder": "~v3.3.2",
         "webmozart/json": "~1.2.2",
         "gemorroj/syntax": "~2.0.0",
-        "zeptech/annotations": "1.1.0",
         "symfony/yaml": "^3.3"
     },
     "require-dev": {
