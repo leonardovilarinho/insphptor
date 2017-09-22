@@ -4,6 +4,11 @@ namespace Insphptor\Components;
 
 class MethodsComponent implements IComponent
 {
+    /**
+     * Find methods in class tokenize
+     * @param  array  $tokenize array of tokens form class
+     * @return array           array with methods [name => x, visibility => y, content => z]
+     */
     public static function find(array $tokenize) : array
     {
         $val = [];
@@ -33,8 +38,9 @@ class MethodsComponent implements IComponent
                         }
                     }
                 } elseif (in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {
-                    if($visibility == '')
+                    if ($visibility == '') {
                         $visibility = str_replace('T_', '', token_name($value[0]));
+                    }
                 }
 
                 if (($key + 1) >= count($tokenize) or in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {

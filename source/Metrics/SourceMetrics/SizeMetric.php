@@ -6,12 +6,19 @@ use Insphptor\Analyzer\AnalyzedClass;
 
 class SizeMetric implements IMetric
 {
-    public static function value(AnalyzedClass &$class)
+    /**
+     * Calcule size from an class
+     * @param  AnalyzedClass &$class target class from calculate
+     * @return float                size
+     */
+    public static function value(AnalyzedClass &$class) : float
     {
         $size = 0;
-        foreach($class->methods as $method)
+        foreach ($class->methods as $method) {
             $size += count($method['content']);
+        }
 
         $class->pushMetric('size', $size / 5);
+        return $size;
     }
 }

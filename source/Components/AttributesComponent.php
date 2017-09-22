@@ -4,6 +4,11 @@ namespace Insphptor\Components;
 
 class AttributesComponent implements IComponent
 {
+    /**
+     * Find attributes in class tokenize
+     * @param  array  $tokenize array of tokens form class
+     * @return array           array with arguments [name => x, visibility => y]
+     */
     public static function find(array $tokenize) : array
     {
         $val = [];

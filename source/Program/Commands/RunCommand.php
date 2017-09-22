@@ -10,8 +10,19 @@ use Symfony\Component\Finder\Finder;
 
 class RunCommand extends Command
 {
+    /**
+     * Storage GeneralAnalyzer
+     * @var Insphptor\Analyzer\GeneralAnalyzer
+     */
     private $ga;
 
+    /**
+     * Get settings and files applying the config definitions, after store all classes
+     * in repository of classes, in end use GeneralAnalyzer to generate components
+     * and calculate all metrics
+     * @param  Args   $args arguments for command
+     * @return int       output to detection of errors
+     */
     public function handle(Args $args) : int
     {
         $this->showSplashScreen();
@@ -50,11 +61,16 @@ class RunCommand extends Command
         $this->ga = new GeneralAnalyzer(ClassesRepository::instance());
         $this->ga->generateComponents();
         $this->ga->calculateSourceMetrics();
-        $this->ga->showComponents();
+        // $this->ga->showAllClasses();
 
         return 0;
     }
 
+    /**
+     * Export command, call run command and get result for generate json file
+     * @param  Args   $args command arguments: view - define displayed system; open - init server php
+     * @return int       output from command
+     */
     public function export(Args $args) : int
     {
         $this->handle($args);
@@ -62,14 +78,14 @@ class RunCommand extends Command
 
         $this->ga->generateJson($args->getArgument('view'));
 
-        if($args->getOption('open')) {
+        if ($args->getOption('open')) {
             $view = $args->getArgument('view');
             $p = config()['views'][  $view ];
             $p .= substr(config()['views'][$view], 0, -1) == '/' ? '' : '/';
 
             $path = config()['project'] . '/' . $p;
             echo color('Serving the result in http://localhost:8000')->bold;
-            exec('php -S 0.0.0.0:8000 -t ' . $path );
+            exec('php -S 0.0.0.0:8000 -t ' . $path);
         }
 
         return 0;

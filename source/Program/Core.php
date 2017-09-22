@@ -8,9 +8,23 @@ use Colors\Color;
 
 class Core extends Singleton
 {
+    /**
+     * Store instance for Color extension, to print persons messages
+     * @var Colors\Color
+     */
     private static $color;
+
+    /**
+     * Array of global settings from console app, defined path, extensions and any
+     * @var array
+     */
     private static $config;
 
+    /**
+     * Initializable the color variable and get insphptor.yml project file, in end
+     * optimize settings optionals.
+     * @return [type] [description]
+     */
     protected function init()
     {
         self::$color = new Color;
@@ -29,7 +43,11 @@ class Core extends Singleton
         self::$config['project'] = getcwd();
     }
 
-    private function optimizeConfiguration($name)
+    /**
+     * Define optinional settings, transform in array and ass config array
+     * @param  string $name name of settings
+     */
+    private function optimizeConfiguration(string $name)
     {
         if (!isset(self::$config[$name])) {
             self::$config[$name] = [];
@@ -40,12 +58,21 @@ class Core extends Singleton
         }
     }
 
+    /**
+     * Get array of settings
+     * @return array application settings
+     */
     public static function config() : array
     {
         return self::$config;
     }
 
-    public static function color($msg) : Color
+    /**
+     * Alias to use color extension
+     * @param  string $msg message to print in output
+     * @return Colors\Color      instance of extension color with message
+     */
+    public static function color(string $msg) : Color
     {
         $c = self::$color;
         return $c($msg);

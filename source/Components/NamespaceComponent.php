@@ -4,6 +4,11 @@ namespace Insphptor\Components;
 
 class NamespaceComponent implements IComponent
 {
+    /**
+     * Find class namespace in class tokenize
+     * @param  array  $tokenize array of tokens form class
+     * @return string           class namespace
+     */
     public static function find(array $tokenize) : string
     {
         $val = '';

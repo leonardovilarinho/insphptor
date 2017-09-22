@@ -1,13 +1,22 @@
 <?php
 
+/**
+ * Define alias from end of line
+ */
 if (! defined('EOL')) {
     define('EOL', PHP_EOL);
 }
 
+/**
+ * Define alias from tab character
+ */
 if (! defined('TAB')) {
     define('TAB', "\t");
 }
 
+/**
+ * Define alias from get application settings
+ */
 if (! function_exists('config')) {
     function config() : array
     {
@@ -15,6 +24,9 @@ if (! function_exists('config')) {
     }
 }
 
+/**
+ * Define alias from color method extension
+ */
 if (! function_exists('color')) {
     function color(string $msg)
     {
@@ -23,7 +35,16 @@ if (! function_exists('color')) {
     }
 }
 
+/**
+ * Function to progress bar
+ */
 if (! function_exists('progress')) {
+    /**
+     * Show progress bar with three colors
+     * @param  int    $step      interval between points
+     * @param  int    &$progress current progress the bar
+     * @param  string $char      character from displayed in bar
+     */
     function progress(int $step, int &$progress, string $char = '|')
     {
         $progress += $step;

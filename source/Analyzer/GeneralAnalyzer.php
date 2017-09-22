@@ -9,13 +9,24 @@ use Webmozart\Json\JsonDecoder;
 
 class GeneralAnalyzer
 {
+    /**
+     * Repository of classes, to calculate this
+     * @var Insphptor\Storage\ComponentsRepository
+     */
     private $repository;
 
+    /**
+     * This construtor, to register default repository classes
+     * @param ClassesRepository $repository classes to analyse
+     */
     public function __construct(ClassesRepository $repository)
     {
         $this->repository = $repository;
     }
 
+    /**
+     * Find and generante all components from all classes this repository
+     */
     public function generateComponents()
     {
         $components = new ComponentsRepository;
@@ -29,6 +40,9 @@ class GeneralAnalyzer
         }
     }
 
+    /**
+     * Calculate and save all source metrics in every class from this repositorie
+     */
     public function calculateSourceMetrics()
     {
         $metrics = new SourceMetricsRepository;
@@ -41,7 +55,10 @@ class GeneralAnalyzer
         }
     }
 
-    public function showComponents()
+    /**
+     * Show all classes details
+     */
+    public function showAllClasses()
     {
         $repository = $this->repository;
 
@@ -50,7 +67,12 @@ class GeneralAnalyzer
         }
     }
 
-    public function generateJson($view = null)
+    /**
+     * Person array for exportation and open and handler json file pushing all new
+     * values
+     * @param  string|null $view view system export to
+     */
+    public function generateJson(string $view = null)
     {
         $repository = $this->repository;
         $json = [
@@ -63,8 +85,9 @@ class GeneralAnalyzer
             $json['classes'][] = $class->toArray() + ['star' => 2.5];
         }
 
-        if(!isset(config()['views'][$view]))
-            die( color('View not found!')->bg_red );
+        if (!isset(config()['views'][$view])) {
+            die(color('View not found!')->bg_red);
+        }
 
         $encoder = new JsonEncoder();
 
@@ -77,8 +100,9 @@ class GeneralAnalyzer
         $encoder->encodeFile($json, $path . $file);
 
         $info = [];
-        if( file_exists($path . 'info.json') )
+        if (file_exists($path . 'info.json')) {
             $info = (new JsonDecoder)->decodeFile($path . 'info.json');
+        }
 
         $info[] = $file;
 

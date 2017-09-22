@@ -4,6 +4,11 @@ namespace Insphptor\Components;
 
 class TypeComponent implements IComponent
 {
+    /**
+     * Find class type in class tokenize
+     * @param  array  $tokenize array of tokens form class
+     * @return string           class type: final, static, abstract | class, interface, file, trait
+     */
     public static function find(array $tokenize) : string
     {
         $val = '';

@@ -6,6 +6,9 @@ use Insphptor\Patterns\Repository;
 
 class ComponentsRepository extends Repository
 {
+    /**
+     * Define components for finded in any class
+     */
     public function create()
     {
         $this->items = [
@@ -14,6 +17,7 @@ class ComponentsRepository extends Repository
             'type' => \Insphptor\Components\TypeComponent::class,
             'attributes' => \Insphptor\Components\AttributesComponent::class,
             'methods' => \Insphptor\Components\MethodsComponent::class,
+            'dependencies' => \Insphptor\Components\DependenciesComponent::class,
         ];
     }
 }
