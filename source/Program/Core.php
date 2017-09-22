@@ -62,7 +62,7 @@ class Core extends Singleton
      * Get array of settings
      * @return array application settings
      */
-    public static function config() : array
+    public static function getConfig() : array
     {
         return self::$config;
     }
@@ -72,7 +72,7 @@ class Core extends Singleton
      * @param  string $msg message to print in output
      * @return Colors\Color      instance of extension color with message
      */
-    public static function color(string $msg) : Color
+    public static function getColor(string $msg) : Color
     {
         $c = self::$color;
         return $c($msg);

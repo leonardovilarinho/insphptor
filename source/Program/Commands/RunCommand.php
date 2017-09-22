@@ -61,7 +61,7 @@ class RunCommand extends Command
         $this->ga = new GeneralAnalyzer(ClassesRepository::instance());
         $this->ga->generateComponents();
         $this->ga->calculateSourceMetrics();
-        // $this->ga->showAllClasses();
+        $this->ga->showAllClasses();
 
         return 0;
     }

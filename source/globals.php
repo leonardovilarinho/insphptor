@@ -20,7 +20,7 @@ if (! defined('TAB')) {
 if (! function_exists('config')) {
     function config() : array
     {
-        return \Insphptor\Program\Core::config();
+        return \Insphptor\Program\Core::getConfig();
     }
 }
 
@@ -30,7 +30,7 @@ if (! function_exists('config')) {
 if (! function_exists('color')) {
     function color(string $msg)
     {
-        $c = \Insphptor\Program\Core::color($msg);
+        $c = \Insphptor\Program\Core::getColor($msg);
         return $c($msg);
     }
 }
