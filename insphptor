@@ -13,5 +13,6 @@ require_once __DIR__.'/./source/globals.php';
  * Create and run my insphptor application
  * @var ConsoleApplication
  */
-$cli = new ConsoleApplication(new Application());
+$app = new Application;
+$cli = new ConsoleApplication( $app );
 $cli->run();
