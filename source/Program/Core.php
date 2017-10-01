@@ -29,16 +29,23 @@ class Core extends Singleton
     {
         self::$color = new Color;
 
-        try {
-            self::$config = Yaml::parse(file_get_contents(getcwd() . '/insphptor.yml'));
-        } catch (\Exception $e) {
-            self::$config = Yaml::parse(file_get_contents(__DIR__ . '/../../insphptor.yml'));
+        $filename = getcwd() . '/insphptor.yml';
+        if (!file_exists($filename)) {
+            die(color('Insphptor file not found!'.EOL)->bold->bg_red);
+        }
+
+        self::$config = Yaml::parse(file_get_contents($filename));
+
+
+        if (!isset(self::$config['rating'])) {
+            self::$config['rating'] = 'auto';
         }
 
         $this->optimizeConfiguration('ignored');
         $this->optimizeConfiguration('extensions');
         $this->optimizeConfiguration('hide');
         $this->optimizeConfiguration('views');
+        $this->optimizeConfiguration('only');
 
         self::$config['project'] = getcwd();
     }

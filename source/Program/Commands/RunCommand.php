@@ -3,10 +3,13 @@
 namespace Insphptor\Program\Commands;
 
 use Webmozart\Console\Api\Args\Args;
+use Webmozart\Console\Api\IO\IO;
 use Insphptor\Analyzer\AnalyzedClass;
 use Insphptor\Storage\ClassesRepository;
 use Insphptor\Analyzer\GeneralAnalyzer;
+use Insphptor\Helpers\CountStarsHelper;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Console\Question\Question;
 
 class RunCommand extends Command
 {
@@ -23,7 +26,7 @@ class RunCommand extends Command
      * @param  Args   $args arguments for command
      * @return int       output to detection of errors
      */
-    public function handle(Args $args) : int
+    public function handle(Args $args, IO $io) : int
     {
         $this->showSplashScreen();
         echo 'Loading files...' . EOL;
@@ -33,10 +36,17 @@ class RunCommand extends Command
         }
 
         $finder = new Finder;
-        $finder->files()->in(config()['project']);
+        $finder->files();
+        if (count(config()['only']) > 0) {
+            foreach (config()['only'] as $value) {
+                $finder->in(config()['project'] . '/' . $value);
+            }
+        } else {
+            $finder->in(config()['project']);
 
-        foreach (config()['ignored'] as $value) {
-            $finder->exclude($value);
+            foreach (config()['ignored'] as $value) {
+                $finder->exclude($value);
+            }
         }
 
         foreach (config()['extensions'] as $value) {
@@ -61,7 +71,8 @@ class RunCommand extends Command
         $this->ga = new GeneralAnalyzer(ClassesRepository::instance());
         $this->ga->generateComponents();
         $this->ga->calculateSourceMetrics();
-        $this->ga->showAllClasses();
+        CountStarsHelper::calculeClassesStars();
+        $this->ga->tableResult($io);
 
         return 0;
     }
@@ -71,12 +82,26 @@ class RunCommand extends Command
      * @param  Args   $args command arguments: view - define displayed system; open - init server php
      * @return int       output from command
      */
-    public function export(Args $args) : int
+    public function export(Args $args, IO $io) : int
     {
-        $this->handle($args);
-        echo 'Loading json...' . EOL;
+        $this->handle($args, $io);
+        $flag = null;
 
-        $this->ga->generateJson($args->getArgument('view'));
+        if ($args->getOption('flag')) {
+            $question = new Question(
+                color('What is the nickname of this generation?')->bold .
+                ' Default is ' .
+                color('null')->bold->magenta . EOL,
+                $flag
+            );
+
+            $flag = $this->ask($args, $io, $question);
+        }
+
+        echo EOL.EOL . 'Loading json...' . EOL.EOL;
+
+
+        $this->ga->generateJson($args->getArgument('view'), $flag);
 
         if ($args->getOption('open')) {
             $view = $args->getArgument('view');

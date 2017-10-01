@@ -2,9 +2,12 @@
 namespace Insphptor\Program\Commands;
 
 use Webmozart\Console\Api\Args\Args;
+use Webmozart\Console\Api\IO\IO;
 
 abstract class Command
 {
+    use \Insphptor\Helpers\QuestionTrait;
+
     /**
      * Show an splash screen from aplication, displayed name and author
      */
@@ -21,5 +24,5 @@ abstract class Command
      * @param  Args   $args arguments reveiced
      * @return int          output for command
      */
-    abstract public function handle(Args $args) : int;
+    abstract public function handle(Args $args, Io $io) : int;
 }

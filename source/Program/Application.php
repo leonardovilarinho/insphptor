@@ -39,16 +39,17 @@ class Application extends DefaultApplicationConfig
      */
     private function defineCommands()
     {
-        $this
-            ->beginCommand('run')
-            ->setDescription('Run analizer metrics')
-            ->setHandler(new \Insphptor\Program\Commands\RunCommand())
-            ->beginSubCommand('export')
-            ->setHandlerMethod('export')
-            ->setDescription('Export result in ' . config()['export'] . ' file')
-            ->addArgument('view', Argument::OPTIONAL, 'The view system', 'default')
-            ->addOption('open', 'o', Option::BOOLEAN, 'Open server with result in view')
-            ->end()
-            ->end();
+        $this->beginCommand('run')
+                ->markDefault()
+                ->setDescription('Run analizer metrics')
+                ->setHandler(new \Insphptor\Program\Commands\RunCommand())
+                ->beginSubCommand('export')
+                    ->setHandlerMethod('export')
+                    ->setDescription('Export result in ' . config()['export'] . ' file')
+                    ->addArgument('view', Argument::OPTIONAL, 'The view system', 'overview')
+                    ->addOption('open', 'o', Option::BOOLEAN, 'Open server with result in view')
+                    ->addOption('flag', 'f', Option::BOOLEAN, 'Add alias for generation')
+                ->end()
+        ->end();
     }
 }
