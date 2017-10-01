@@ -6,6 +6,7 @@ use Insphptor\Analyzer\AnalyzedClass;
 
 class CohesionMetric implements IMetric
 {
+    private static $weight = 1;
 
     /**
      * Calcule cohesion from an class
@@ -33,7 +34,7 @@ class CohesionMetric implements IMetric
                     }
 
                     if ($valid > 0 and $valid < 4) {
-                        $name .= $token[1];
+                        $name .= isset($token[1]) ? $token[1] : '';
                         $valid ++;
                         if ($valid == 4) {
                             $methodVariables[$key][] = $name;
@@ -64,7 +65,9 @@ class CohesionMetric implements IMetric
             }
         }
 
-        $class->pushMetric('cohesion', $cohesion);
+        $cohesion = $cohesion / self::$weight;
+
+        $class->pushMetric('cohesion', $cohesion == 0 ? 1 : $cohesion);
         return $cohesion;
     }
 }
