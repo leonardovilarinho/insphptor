@@ -6,6 +6,8 @@ use Insphptor\Analyzer\AnalyzedClass;
 
 class SizeMetric implements IMetric
 {
+    private static $weight = 5;
+
     /**
      * Calcule size from an class
      * @param  AnalyzedClass &$class target class from calculate
@@ -18,7 +20,7 @@ class SizeMetric implements IMetric
             $size += count($method['content']);
         }
 
-        $class->pushMetric('size', $size / 5);
+        $class->pushMetric('size', ($size / 5) / self::$weight);
         return $size;
     }
 }
