@@ -6,6 +6,8 @@ use Insphptor\Analyzer\AnalyzedClass;
 
 class EncapsulationMetric implements IMetric
 {
+    private static $weight = 1;
+
     /**
      * Calcule encapsulation from an class
      * @param  AnalyzedClass &$class target class from calculate
@@ -14,7 +16,7 @@ class EncapsulationMetric implements IMetric
     public static function value(AnalyzedClass &$class) : float
     {
         $private = 1;
-        $public = 1;
+        $public = 0;
         foreach ($class->methods as $key => $method) {
             if ($method['visibility'] === 'public') {
                 $public += count($method['content']);
@@ -23,10 +25,14 @@ class EncapsulationMetric implements IMetric
             }
         }
 
-        $encapsulation = $public / ($private * 1.5);
-        $encapsulation = \number_format($encapsulation, 2);
+        $encapsulation = 0;
 
-        $class->pushMetric('encapsulation', $encapsulation);
-        return $encapsulation;
+        if ($public > $private) {
+            $encapsulation = $public / ($private * 5);
+            $encapsulation = \number_format($encapsulation, 2);
+        }
+
+        $class->pushMetric('encapsulation', $encapsulation / self::$weight);
+        return (float)$encapsulation;
     }
 }
