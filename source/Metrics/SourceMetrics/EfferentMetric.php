@@ -6,6 +6,8 @@ use Insphptor\Analyzer\AnalyzedClass;
 
 class EfferentMetric implements IMetric
 {
+    private static $weight = 1;
+
     /**
      * Array of tokens why define ocorrence this metric
      * @var array
@@ -32,7 +34,7 @@ class EfferentMetric implements IMetric
             }
         }
 
-        $class->pushMetric('efferent', $efferent);
+        $class->pushMetric('efferent', $efferent / self::$weight);
         return $efferent;
     }
 }
