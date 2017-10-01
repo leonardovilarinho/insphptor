@@ -6,6 +6,8 @@ use Insphptor\Analyzer\AnalyzedClass;
 
 class ComplexityMetric implements IMetric
 {
+    private static $weight = 1;
+
     /**
      * Array of tokens why define ocorrence this metric
      * @var array
@@ -38,7 +40,7 @@ class ComplexityMetric implements IMetric
                 }
             }
         }
-        $class->pushMetric('complexity', $complexity);
+        $class->pushMetric('complexity', $complexity / self::$weight);
         return $complexity;
     }
 }
