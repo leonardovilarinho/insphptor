@@ -8,6 +8,8 @@ use Insphptor\Storage\ClassesRepository;
 class AfferentMetric implements IMetric
 {
 
+    private static $weight = 1;
+
     /**
      * Calcule afferent from an class
      * @param  AnalyzedClass &$class target class from calculate
@@ -25,7 +27,7 @@ class AfferentMetric implements IMetric
             }
         }
 
-        $class->pushMetric('afferent', $afferent);
+        $class->pushMetric('afferent', $afferent / self::$weight);
 
         return $afferent;
     }
