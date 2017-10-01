@@ -4,6 +4,9 @@ namespace Insphptor\Analyzer;
 use Insphptor\Storage\ClassesRepository;
 use Insphptor\Storage\ComponentsRepository;
 use Insphptor\Storage\SourceMetricsRepository;
+use Insphptor\Helpers\CountStarsHelper;
+use Webmozart\Console\Api\IO\IO;
+use Webmozart\Console\UI\Component\Table;
 use Webmozart\Json\JsonEncoder;
 use Webmozart\Json\JsonDecoder;
 
@@ -71,18 +74,20 @@ class GeneralAnalyzer
      * Person array for exportation and open and handler json file pushing all new
      * values
      * @param  string|null $view view system export to
+     * @param  string|null $alias alias from result generation
      */
-    public function generateJson(string $view = null)
+    public function generateJson(string $view = null, string $alias = null)
     {
         $repository = $this->repository;
         $json = [
-            'name' => config()['name'],
-            'date' => date('Y-m-d H:i:s'),
-            'star' => 3
+            'name'  => config()['name'],
+            'date'  => date('Y-m-d H:i:s'),
+            'alias' => $alias,
+            'star'  => CountStarsHelper::calculeProjectStars()
         ];
 
         foreach ($repository() as $class) {
-            $json['classes'][] = $class->toArray() + ['star' => 2.5];
+            $json['classes'][] = $class->toArray();
         }
 
         if (!isset(config()['views'][$view])) {
@@ -107,5 +112,41 @@ class GeneralAnalyzer
         $info[] = $file;
 
         $encoder->encodeFile($info, $path . 'info.json');
+    }
+
+    public function tableResult(Io $io)
+    {
+        $repository = $this->repository;
+        $table = new Table();
+        $table->setHeaderRow(['Type', 'Name', 'Stars']);
+
+        $stars = [];
+        foreach ($repository() as $class) {
+            $stars[] = $class->star;
+        }
+        asort($stars);
+        $count = 0;
+        $stars = \array_chunk($stars, 5)[0];
+
+        $result = [];
+
+        foreach ($repository() as $class) {
+            if (in_array($class->star, $stars)) {
+                $result[] = $class;
+                $key = \array_search($class->star, $stars);
+                unset($stars[$key]);
+            }
+        }
+
+        
+        foreach ($result as $class) {
+            $table->addRow([
+                $class->type,
+                $class->namespace . '\\' . $class->name,
+                $class->star
+            ]);
+        }
+        
+        $table->render($io);
     }
 }

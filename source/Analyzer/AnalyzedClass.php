@@ -91,7 +91,7 @@ class AnalyzedClass
      * @param  string $name  metric name
      * @param  float $value metric value
      */
-    public function pushMetric(string $name, float $value)
+    public function pushMetric(string $name, $value)
     {
         $this->info['metrics'][$name] = $value;
     }
