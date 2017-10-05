@@ -4,7 +4,9 @@ namespace Insphptor\Analyzer;
 use Insphptor\Storage\ClassesRepository;
 use Insphptor\Storage\ComponentsRepository;
 use Insphptor\Storage\SourceMetricsRepository;
+use Insphptor\Storage\SocialMetricsRepository;
 use Insphptor\Helpers\CountStarsHelper;
+use Insphptor\Helpers\ProductivityMetric;
 use Webmozart\Console\Api\IO\IO;
 use Webmozart\Console\UI\Component\Table;
 use Webmozart\Json\JsonEncoder;
@@ -52,7 +54,19 @@ class GeneralAnalyzer
         $repository = $this->repository;
 
         foreach ($repository() as &$class) {
-            foreach ($metrics() as $name => $metric) {
+            foreach ($metrics() as $metric) {
+                $metric::value($class);
+            }
+        }
+    }
+
+    public function calculateSocialMetrics()
+    {
+        $metrics = new SocialMetricsRepository;
+        $repository = $this->repository;
+
+        foreach ($repository() as &$class) {
+            foreach ($metrics() as $metric) {
                 $metric::value($class);
             }
         }
@@ -78,12 +92,19 @@ class GeneralAnalyzer
      */
     public function generateJson(string $view = null, string $alias = null)
     {
+        $devs = [];
+        if (HAS_GIT and config()['git'] != 'not') {
+            $devs = ProductivityMetric::devs();
+        }
+
         $repository = $this->repository;
         $json = [
             'name'  => config()['name'],
             'date'  => date('Y-m-d H:i:s'),
             'alias' => $alias,
-            'star'  => CountStarsHelper::calculeProjectStars()
+            'git'   => HAS_GIT,
+            'star'  => CountStarsHelper::calculeProjectStars(),
+            'devs'  => $devs
         ];
 
         foreach ($repository() as $class) {
@@ -138,7 +159,6 @@ class GeneralAnalyzer
             }
         }
 
-        
         foreach ($result as $class) {
             $table->addRow([
                 $class->type,
@@ -146,7 +166,6 @@ class GeneralAnalyzer
                 $class->star
             ]);
         }
-        
         $table->render($io);
     }
 }

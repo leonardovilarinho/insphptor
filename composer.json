@@ -42,7 +42,10 @@
         "symfony/finder": "~v3.3.2",
         "webmozart/json": "~1.2.2",
         "gemorroj/syntax": "~2.0.0",
-        "symfony/yaml": "^3.3"
+        "symfony/yaml": "^3.3",
+        "cypresslab/gitelephant": "^1.1",
+        "tajawal/lodash-php": "^1.0",
+        "symfony/process": "^3.3"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.2",

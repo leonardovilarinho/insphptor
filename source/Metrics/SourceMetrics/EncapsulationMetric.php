@@ -32,7 +32,7 @@ class EncapsulationMetric implements IMetric
             $encapsulation = \number_format($encapsulation, 2);
         }
 
-        $class->pushMetric('encapsulation', $encapsulation / self::$weight);
+        $class->pushSourceMetric('encapsulation', $encapsulation / self::$weight);
         return (float)$encapsulation;
     }
 }

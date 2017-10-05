@@ -12,12 +12,12 @@ class SourceMetricsRepository extends Repository
     public function create()
     {
         $this->items = [
-            'size'          => \Insphptor\Metrics\SourceMetrics\SizeMetric::class,
-            'complexity'    => \Insphptor\Metrics\SourceMetrics\ComplexityMetric::class,
-            // 'encapsulation' => \Insphptor\Metrics\SourceMetrics\EncapsulationMetric::class,
-            'efferent'      => \Insphptor\Metrics\SourceMetrics\EfferentMetric::class,
-            'afferent'      => \Insphptor\Metrics\SourceMetrics\AfferentMetric::class,
-            'cohesion'      => \Insphptor\Metrics\SourceMetrics\CohesionMetric::class,
+            \Insphptor\Metrics\SourceMetrics\SizeMetric::class,
+            \Insphptor\Metrics\SourceMetrics\ComplexityMetric::class,
+            //\Insphptor\Metrics\SourceMetrics\EncapsulationMetric::class,
+            \Insphptor\Metrics\SourceMetrics\EfferentMetric::class,
+            \Insphptor\Metrics\SourceMetrics\AfferentMetric::class,
+            \Insphptor\Metrics\SourceMetrics\CohesionMetric::class,
         ];
     }
 }

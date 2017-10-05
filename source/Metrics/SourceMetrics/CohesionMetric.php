@@ -22,10 +22,11 @@ class CohesionMetric implements IMetric
         foreach ($class->methods as $key => $method) {
             $valid = 0;
             $name = '';
-            $prefix = substr($method['name'], 0, 3);
-            $prefix = strtolower($prefix);
+            $prefix  = substr($method['name'], 0, 3);
+            $prefix2 = substr($method['name'], 0, 4);
+            $prefix  = strtolower($prefix);
 
-            if (!in_array($prefix, ['get', 'set'])) {
+            if (!in_array($prefix, ['get', 'set']) and $prefix2 != 'push') {
                 foreach ($method['content'] as $token) {
                     if (in_array($token[0], [T_VARIABLE, T_STRING])) {
                         if (in_array($token[1], ['$this', 'self'])) {
@@ -67,7 +68,7 @@ class CohesionMetric implements IMetric
 
         $cohesion = $cohesion / self::$weight;
 
-        $class->pushMetric('cohesion', $cohesion == 0 ? 1 : $cohesion);
+        $class->pushSourceMetric('cohesion', $cohesion == 0 ? 1 : $cohesion);
         return $cohesion;
     }
 }

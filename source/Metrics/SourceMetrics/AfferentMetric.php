@@ -27,7 +27,7 @@ class AfferentMetric implements IMetric
             }
         }
 
-        $class->pushMetric('afferent', $afferent / self::$weight);
+        $class->pushSourceMetric('afferent', $afferent / self::$weight);
 
         return $afferent;
     }

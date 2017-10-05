@@ -2,6 +2,8 @@ export: json
 
 name: insphptor project
 
+git: auto
+
 hide:
   - interface
 

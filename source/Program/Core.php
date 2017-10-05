@@ -36,9 +36,12 @@ class Core extends Singleton
 
         self::$config = Yaml::parse(file_get_contents($filename));
 
-
         if (!isset(self::$config['rating'])) {
             self::$config['rating'] = 'auto';
+        }
+
+        if (!isset(self::$config['git'])) {
+            self::$config['git'] = 'auto';
         }
 
         $this->optimizeConfiguration('ignored');
@@ -48,6 +51,12 @@ class Core extends Singleton
         $this->optimizeConfiguration('only');
 
         self::$config['project'] = getcwd();
+
+        if (is_dir(self::$config['project'].'/.git')) {
+            define('HAS_GIT', true);
+        } else {
+            define('HAS_GIT', false);
+        }
     }
 
     /**

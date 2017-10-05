@@ -71,6 +71,11 @@ class RunCommand extends Command
         $this->ga = new GeneralAnalyzer(ClassesRepository::instance());
         $this->ga->generateComponents();
         $this->ga->calculateSourceMetrics();
+
+        if (config()['git'] != 'not' and HAS_GIT) {
+            $this->ga->calculateSocialMetrics();
+        }
+
         CountStarsHelper::calculeClassesStars();
         $this->ga->tableResult($io);
 

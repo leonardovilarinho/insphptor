@@ -49,5 +49,5 @@ pre-push:
                 enabled: false
                 message: null
     message:
-        right-message: null
-        error-message: null
+        right-message: ''
+        error-message: ''
