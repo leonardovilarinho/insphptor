@@ -20,7 +20,7 @@ class SizeMetric implements IMetric
             $size += count($method['content']);
         }
 
-        $class->pushSourceMetric('size', ($size / 5) / self::$weight);
+        $class->pushMetric('size', ($size / 5) / self::$weight);
         return $size;
     }
 }

@@ -22,4 +22,9 @@ abstract class RepositoryAndSingleton extends Singleton
     {
         return $this->items;
     }
+
+    public function count() : int
+    {
+        return count($this->items);
+    }
 }

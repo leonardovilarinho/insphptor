@@ -16,7 +16,7 @@ class InstabilityMetric implements IMetric
         $e = self::git('log', ['--follow', $class->filename]);
         $instability = count($e);
 
-        $class->pushSourceMetric('instability', $instability);
+        $class->pushMetric('instability', $instability);
 
         return $instability;
     }

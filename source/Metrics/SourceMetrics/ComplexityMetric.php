@@ -40,7 +40,7 @@ class ComplexityMetric implements IMetric
                 }
             }
         }
-        $class->pushSourceMetric('complexity', $complexity / self::$weight);
+        $class->pushMetric('complexity', $complexity / self::$weight);
         return $complexity;
     }
 }

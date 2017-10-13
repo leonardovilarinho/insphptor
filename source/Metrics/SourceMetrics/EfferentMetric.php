@@ -34,7 +34,7 @@ class EfferentMetric implements IMetric
             }
         }
 
-        $class->pushSourceMetric('efferent', $efferent / self::$weight);
+        $class->pushMetric('efferent', $efferent / self::$weight);
         return $efferent;
     }
 }

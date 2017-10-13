@@ -2,17 +2,15 @@
 <?php
 declare(strict_types = 1);
 
-use Webmozart\Console\ConsoleApplication;
-use Insphptor\Program\Application;
-
 require_once __DIR__.'/./vendor/autoload.php';
 
 require_once __DIR__.'/./source/globals.php';
 
-/**
- * Create and run my insphptor application
- * @var ConsoleApplication
- */
-$app = new Application;
-$cli = new ConsoleApplication( $app );
-$cli->run();
+use Symfony\Component\Console\Application;
+$application = new Application(APP_NAME);
+
+$application->add(new \Insphptor\Program\Commands\RunCommand);
+$application->add(new \Insphptor\Program\Commands\ExportCommand);
+$application->add(new \Insphptor\Program\Commands\InitCommand);
+
+$application->run();

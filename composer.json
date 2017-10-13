@@ -36,16 +36,13 @@
         "insphptor"
     ],
     "require": {
-        "webmozart/console": "~1.0.0-beta5",
-        "kevinlebrun/colors.php": "0.*",
-        "kzykhys/git": "dev-master",
         "symfony/finder": "~v3.3.2",
         "webmozart/json": "~1.2.2",
         "gemorroj/syntax": "~2.0.0",
         "symfony/yaml": "^3.3",
-        "cypresslab/gitelephant": "^1.1",
-        "tajawal/lodash-php": "^1.0",
-        "symfony/process": "^3.3"
+        "symfony/process": "^3.3",
+        "symfony/console": "^3.3",
+        "duncan3dc/fork-helper": "^2.2"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.2",

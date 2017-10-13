@@ -48,35 +48,6 @@ class AnalyzedClass
     }
 
     /**
-     * Recursive print, from print all informations this class
-     * @param  string|null $prefix string for before print
-     * @param  array|null  $array  value for print
-     */
-    public function print(string $prefix = null, array $array = null)
-    {
-        $array = $array != null ? $array : $this->info;
-        foreach ($array as $key => $value) {
-            if (!in_array($key, ['token', 'filename'])) {
-                if (is_array($value)) {
-                    if (!in_array($key, ['content'])) {
-                        if ($value == null) {
-                            break;
-                        }
-                        echo color($key)->magenta . EOL;
-
-                        $this->print(TAB, $value);
-                    }
-                } else {
-                    echo $prefix . color($key)->bold . ' = ' . $value . EOL;
-                }
-            }
-        }
-        if ($array == $this->info) {
-            echo '-----------------------' . EOL;
-        }
-    }
-
-    /**
      * Add an attribute in class
      * @param  string $name  attribute name
      * @param  mixed $value attribute value
@@ -91,14 +62,9 @@ class AnalyzedClass
      * @param  string $name  metric name
      * @param  float $value metric value
      */
-    public function pushSourceMetric(string $name, $value)
+    public function pushMetric(string $name, $value)
     {
         $this->info['metrics'][$name] = $value;
-    }
-
-    public function pushSocialMetric(string $name, $value)
-    {
-        $this->info['git'][$name] = $value;
     }
 
     /**

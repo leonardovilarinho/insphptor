@@ -28,7 +28,7 @@ class BugMetric implements IMetric
             $bug ++;
         }
 
-        $class->pushSourceMetric('bug', $bug);
+        $class->pushMetric('bug', $bug);
 
         return $bug;
     }

@@ -1,18 +1,13 @@
+name: Insphptor
 export: json
-
-name: insphptor project
-
-git: auto
-
+git: 'yes'
+level: normal
+rank: '6'
 hide:
-  - interface
-
+    - interface
+    - file
+    - trait
 only:
-  - source
-rating: auto
-
-extensions:
-  - php
-
+    - source
 views:
-  overview: ../vue-high/
+    overview: insphptor-overview

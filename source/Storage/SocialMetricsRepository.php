@@ -12,8 +12,8 @@ class SocialMetricsRepository extends Repository
     public function create()
     {
         $this->items = [
-            \Insphptor\Metrics\SocialMetrics\BugMetric::class,
-            \Insphptor\Metrics\SocialMetrics\InstabilityMetric::class,
+            'bug'           =>  \Insphptor\Metrics\SocialMetrics\BugMetric::class,
+            'instability'   =>  \Insphptor\Metrics\SocialMetrics\InstabilityMetric::class,
         ];
     }
 }

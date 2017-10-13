@@ -1,10 +1,17 @@
 <?php
-namespace Insphptor\Helpers;
+namespace Insphptor\Metrics;
 
 use Insphptor\Storage\ClassesRepository;
 
-class CountStarsHelper
+class StarsMetric
 {
+    private static $projectStars = null;
+    private static $levels = [
+        'NEWBIE'    => 3.5,
+        'NORMAL'    => 2.6,
+        'HARDCORE'  => 1.8
+    ];
+
     public static function calculeClassesStars()
     {
         $classes = ClassesRepository::instance();
@@ -16,7 +23,7 @@ class CountStarsHelper
 
         asort($weight);
 
-        $max = config()['rating'] != 'auto' ? config()['rating'] : end($weight);
+        $max =  end($weight) * self::$levels[ strtoupper(config()['level']) ];
 
         $weight = array_map(function ($item) use ($max) {
             $inversion = ($max - $item);
@@ -33,13 +40,18 @@ class CountStarsHelper
 
     public static function calculeProjectStars() : float
     {
+        if (self::$projectStars != null) {
+            return self::$projectStars;
+        }
+
         $classes = ClassesRepository::instance();
         $all = 0;
-
         foreach ($classes() as $class) {
             $all += $class->star;
         }
 
-        return round($all / $classes->count(), 1);
+        self::$projectStars = round($all / $classes->count(), 1);
+
+        return self::$projectStars;
     }
 }

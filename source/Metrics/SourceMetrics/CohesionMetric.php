@@ -68,7 +68,7 @@ class CohesionMetric implements IMetric
 
         $cohesion = $cohesion / self::$weight;
 
-        $class->pushSourceMetric('cohesion', $cohesion == 0 ? 1 : $cohesion);
+        $class->pushMetric('cohesion', $cohesion == 0 ? 1 : $cohesion);
         return $cohesion;
     }
 }

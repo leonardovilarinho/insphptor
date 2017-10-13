@@ -31,6 +31,15 @@ class ClassesRepository extends RepositoryAndSingleton
         $this->items[] = $class;
     }
 
+
+    public function removeClass(AnalyzedClass $class)
+    {
+        $index = array_search($class, $this->items);
+        if ($index !== false) {
+            unset($this->items[$index]);
+        }
+    }
+
     /**
      * Get all classes from this repository
      * @return array array with all classes
@@ -40,12 +49,12 @@ class ClassesRepository extends RepositoryAndSingleton
         return $this->items;
     }
 
-    /**
-     * Get number of classes in this repository
-     * @return int number of classes
-     */
-    public function count() : int
+    public function sortByStars() : array
     {
-        return count($this->items);
+        usort($this->items, function ($a, $b) {
+            return $a->star > $b->star;
+        });
+
+        return $this->items;
     }
 }

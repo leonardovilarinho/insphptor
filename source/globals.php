@@ -1,6 +1,19 @@
 <?php
 
 /**
+ * Define logo this app
+ */
+if (!defined('APP_NAME')) {
+    define('APP_NAME', '
+	 ___
+	  )  _   _ <fg=blue>  _ ( _   _ </> _)_ _   _
+	_(_ ) ) (  <fg=blue> )_) ) ) )_)</> (_ (_) )
+	        _) <fg=blue>(       (   </>
+	                                           v1.0.0
+	                            By <fg=blue>Leonardo Vilarinho</>'.PHP_EOL);
+}
+
+/**
  * Define alias from end of line
  */
 if (! defined('EOL')) {
@@ -20,42 +33,6 @@ if (! defined('TAB')) {
 if (! function_exists('config')) {
     function config() : array
     {
-        return \Insphptor\Program\Core::getConfig();
-    }
-}
-
-/**
- * Define alias from color method extension
- */
-if (! function_exists('color')) {
-    function color(string $msg)
-    {
-        $c = \Insphptor\Program\Core::getColor($msg);
-        return $c($msg);
-    }
-}
-
-/**
- * Function to progress bar
- */
-if (! function_exists('progress')) {
-    /**
-     * Show progress bar with three colors
-     * @param  int    $step      interval between points
-     * @param  int    &$progress current progress the bar
-     * @param  string $char      character from displayed in bar
-     */
-    function progress(int $step, int &$progress, string $char = '|')
-    {
-        $progress += $step;
-        for ($i = 0; $i < $step; $i++) {
-            if ($progress <= 25) {
-                echo color($char)->bg_red;
-            } elseif ($progress <= 60) {
-                echo color($char)->bg_yellow;
-            } else {
-                echo color($char)->bg_green;
-            }
-        }
+        return \Insphptor\Program\Config\Config::getConfig();
     }
 }
