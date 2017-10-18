@@ -9,7 +9,7 @@ use Insphptor\Helpers\GitTrait;
 class InstabilityMetric implements IMetric
 {
     use GitTrait;
-    public static function value(AnalyzedClass &$class) : float
+    public static function value(AnalyzedClass $class) : float
     {
         $instability = 0;
 

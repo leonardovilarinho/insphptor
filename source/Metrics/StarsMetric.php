@@ -5,7 +5,7 @@ use Insphptor\Storage\ClassesRepository;
 
 class StarsMetric
 {
-    private static $projectStars = null;
+    private static $projectStars = 0;
     private static $levels = [
         'NEWBIE'    => 3.5,
         'NORMAL'    => 2.6,
@@ -40,17 +40,15 @@ class StarsMetric
 
     public static function calculeProjectStars() : float
     {
-        if (self::$projectStars != null) {
-            return self::$projectStars;
-        }
-
         $classes = ClassesRepository::instance();
         $all = 0;
         foreach ($classes() as $class) {
             $all += $class->star;
         }
 
-        self::$projectStars = round($all / $classes->count(), 1);
+        $classes = $classes->count() > 0 ? $classes->count() : 1;
+
+        self::$projectStars = round($all / $classes, 1);
 
         return self::$projectStars;
     }

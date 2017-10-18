@@ -20,6 +20,7 @@ class Singleton
 
     /**
      * Function for initialize this Singleton
+     * @codeCoverageIgnore
      */
     protected function init()
     {
@@ -35,6 +36,7 @@ class Singleton
 
     /**
      * Locked clone from class
+     * @codeCoverageIgnore
      */
     private function __clone()
     {
@@ -42,6 +44,7 @@ class Singleton
 
     /**
      * Locked wakeup from class
+     * @codeCoverageIgnore
      */
     private function __wakeup()
     {

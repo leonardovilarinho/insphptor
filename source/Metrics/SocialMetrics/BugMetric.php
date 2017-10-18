@@ -12,7 +12,7 @@ class BugMetric implements IMetric
 
     private static $terms = ['bug', 'fix', 'error'];
 
-    public static function value(AnalyzedClass &$class) : float
+    public static function value(AnalyzedClass $class) : float
     {
         $bug = 0;
 

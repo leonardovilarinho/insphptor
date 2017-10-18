@@ -1,5 +1,5 @@
 <?php
-
+// @codeCoverageIgnoreStart
 /**
  * Define logo this app
  */
@@ -36,3 +36,4 @@ if (! function_exists('config')) {
         return \Insphptor\Program\Config\Config::getConfig();
     }
 }
+// @codeCoverageIgnoreEnd

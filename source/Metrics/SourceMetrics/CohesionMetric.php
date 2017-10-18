@@ -13,7 +13,7 @@ class CohesionMetric implements IMetric
      * @param  AnalyzedClass &$class target class from calculate
      * @return float                cohesion
      */
-    public static function value(AnalyzedClass &$class) : float
+    public static function value(AnalyzedClass $class) : float
     {
         $cohesion = count($class->methods);
         $methodVariables = [];

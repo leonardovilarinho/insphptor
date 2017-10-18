@@ -1,6 +1,8 @@
 <?php
 namespace Insphptor\Analyzer;
 
+use Symfony\Component\Console\Output\OutputInterface;
+
 class AnalyzedClass
 {
     /**
@@ -17,11 +19,17 @@ class AnalyzedClass
     public function __construct(string $filename)
     {
         $this->info['filename'] = $filename;
+        if (!file_exists($filename)) {
+            throw new \Exception($filename . ' not found');
+        }
         $buffer = file_get_contents($filename);
 
         $this->info['token'] = token_get_all($buffer);
         $this->info['lines'] = substr_count($buffer, "\n");
+        $this->info['methods'] = [];
         unset($buffer);
+
+        Analyzer::analyze($this);
     }
 
     /**
@@ -85,8 +93,12 @@ class AnalyzedClass
         $array = $this->info;
         unset($array['token']);
 
-        foreach ($array['methods'] as $key => $value) {
-            unset($array['methods'][$key]['content']);
+        if (isset($array['methods'])) {
+            foreach ($array['methods'] as $key => $value) {
+                if (isset($array['methods'][$key]['content'])) {
+                    unset($array['methods'][$key]['content']);
+                }
+            }
         }
 
         return $array;

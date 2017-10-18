@@ -14,7 +14,7 @@ class TypeComponent implements IComponent
         $val = '';
         foreach ($tokenize as $value) {
             if (isset($value[0])) {
-                if (in_array($value[0], [T_FINAL, T_STATIC, T_ABSTRACT])) {
+                if (in_array($value[0], [T_FINAL, T_ABSTRACT])) {
                     $val = str_replace('T_', '', token_name($value[0])) . ' ' . $val;
                 }
 

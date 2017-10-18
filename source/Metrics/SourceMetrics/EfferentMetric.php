@@ -22,7 +22,7 @@ class EfferentMetric implements IMetric
      * @param  AnalyzedClass &$class target class from calculate
      * @return float                efferent
      */
-    public static function value(AnalyzedClass &$class) : float
+    public static function value(AnalyzedClass $class) : float
     {
         $efferent = 0;
 

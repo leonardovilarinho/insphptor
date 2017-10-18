@@ -3,6 +3,7 @@ cs:
 
 fix:
 	phpcbf --standard=PSR2 source/
+	phpcbf --standard=PSR2 tests/
 
 all:
 	git add .

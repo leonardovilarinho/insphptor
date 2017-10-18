@@ -9,23 +9,16 @@
    convertWarningsToExceptions="true"
    processIsolation="false"
    stopOnFailure="false"
+   verbose="true"
 >
 
+    <php>
+        <const name="RUNNING_PHPUNIT" value="true"/>
+    </php>
+
    <testsuites>
-      <testsuite name="Social Metrics Tests">
-         <directory suffix="Test.php">./tests/SocialMetrics</directory>
-      </testsuite>
-
-      <testsuite name="Source Metrics Tests">
-         <directory suffix="Test.php">./tests/SourceMetrics</directory>
-      </testsuite>
-
-      <testsuite name="Program Tests">
-         <directory suffix="Test.php">./tests/Program</directory>
-      </testsuite>
-
-       <testsuite name="Export Services Tests">
-         <directory suffix="Test.php">./tests/ExportServices</directory>
+      <testsuite name="Insphptor Tests">
+         <directory suffix="Test.php">./tests</directory>
       </testsuite>
    </testsuites>
 
@@ -35,8 +28,8 @@
       </whitelist>
    </filter>
 
-   <!-- <logging>
+   <logging>
       <log type="coverage-html" target="./coverage" lowUpperBound="50" highLowerBound="70"/>
-   </logging> -->
+   </logging>
 
 </phpunit>

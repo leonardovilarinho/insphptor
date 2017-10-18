@@ -27,4 +27,9 @@ abstract class RepositoryAndSingleton extends Singleton
     {
         return count($this->items);
     }
+
+    public function clear()
+    {
+        $this->items = [];
+    }
 }

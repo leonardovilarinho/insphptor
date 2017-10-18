@@ -15,7 +15,7 @@ class AfferentMetric implements IMetric
      * @param  AnalyzedClass &$class target class from calculate
      * @return float                afferent
      */
-    public static function value(AnalyzedClass &$class) : float
+    public static function value(AnalyzedClass $class) : float
     {
         $afferent = 0;
         $classname = $class->namespace . '\\' . $class->name;

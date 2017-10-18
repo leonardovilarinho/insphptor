@@ -1,11 +1,11 @@
 <?php
 namespace Insphptor\Program\Commands;
 
-use Insphptor\Analyzer\GeneralAnalyzer;
 use Insphptor\Program\ExportServices\JsonExport;
 use Insphptor\Metrics\DevelopersMetric;
 use Insphptor\Metrics\StarsMetric;
 use Insphptor\Program\Helpers\BoxObject;
+use Insphptor\Storage\ClassesRepository;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
@@ -37,13 +37,11 @@ class ExportCommand extends InsphptorCommand
             $flag = $this->askNameFromGeneration($input, $output);
         }
 
-        $generalAnalyzer = GeneralAnalyzer::instance();
-
         $stars = StarsMetric::calculeProjectStars();
         $devs = DevelopersMetric::getDevelopers();
         $path = $this->pathToView($view);
 
-        $export = new JsonExport($generalAnalyzer->getRepository(), $devs, $output);
+        $export = new JsonExport(ClassesRepository::instance(), $devs, $output);
         $export->export($path.'/data/', $stars, $flag);
 
         BoxObject::display(sprintf('The result was exported to %s/data', $path), $output);

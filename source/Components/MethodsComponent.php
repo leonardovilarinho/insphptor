@@ -20,12 +20,18 @@ class MethodsComponent implements IComponent
 
         foreach ($tokenize as $key => $value) {
             if (isset($value[0])) {
-                if ($visibility != '' and $value[0] != T_WHITESPACE and isset($value[1])) {
+                if (in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {
+                    $visibility = str_replace('T_', '', token_name($value[0]));
+                }
+                
+                if ($value[0] != T_WHITESPACE and isset($value[1])) {
                     if ($value[0] == T_FUNCTION) {
                         $valid = true;
                     } else {
                         if (in_array($value[0], [T_STATIC, T_ABSTRACT])) {
-                            $visibility .= ' ' . str_replace('T_', '', token_name($value[0]));
+                            if (stripos($visibility, 'static') === false) {
+                                $visibility .= ' ' . str_replace('T_', '', token_name($value[0]));
+                            }
                         } elseif ($visibility != '' and $valid) {
                             $val[$count] = [
                             'name' => $value[1],
@@ -37,12 +43,8 @@ class MethodsComponent implements IComponent
                             $count ++;
                         }
                     }
-                } elseif (in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {
-                    if ($visibility == '') {
-                        $visibility = str_replace('T_', '', token_name($value[0]));
-                    }
                 }
-
+                
                 if (($key + 1) >= count($tokenize) or in_array($value[0], [T_PUBLIC, T_PRIVATE, T_PROTECTED])) {
                     if ($count > 1) {
                         $val[$count - 1]['content'] = $content;
@@ -54,6 +56,12 @@ class MethodsComponent implements IComponent
                 if ($find) {
                     $content[] = $value;
                 }
+            }
+        }
+
+        foreach ($val as &$r) {
+            if (!isset($r['content'])) {
+                $r['content'] = [];
             }
         }
 

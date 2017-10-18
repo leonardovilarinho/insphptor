@@ -27,7 +27,7 @@ class ComplexityMetric implements IMetric
      * @param  AnalyzedClass &$class target class from calculate
      * @return float                complexity
      */
-    public static function value(AnalyzedClass &$class) : float
+    public static function value(AnalyzedClass $class) : float
     {
         $complexity = 0;
         foreach ($class->methods as $method) {

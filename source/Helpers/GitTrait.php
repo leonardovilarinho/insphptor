@@ -6,7 +6,7 @@ use Symfony\Component\Process\ProcessBuilder;
 
 trait GitTrait
 {
-    private function git(string $command, array $options = [])
+    public function git(string $command, array $options = [])
     {
 
         $builder = ProcessBuilder::create()
