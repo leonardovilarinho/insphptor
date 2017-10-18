@@ -16,8 +16,7 @@ class ComplexityMetric implements IMetric
         T_IF            , T_ELSEIF      , T_ELSE            , T_FOR                 ,
         T_FOREACH       , T_SWITCH      , T_BOOLEAN_AND     , T_BOOLEAN_OR          ,
         T_BREAK         , T_CASE        , T_CATCH           , T_CONTINUE            ,
-        T_DO            , T_FINALLY     , T_IS_EQUAL        , T_IS_GREATER_OR_EQUAL ,
-        T_IS_IDENTICAL  , T_IS_NOT_EQUAL, T_IS_NOT_IDENTICAL, T_IS_SMALLER_OR_EQUAL ,
+        T_DO            , T_FINALLY     ,
         T_SPACESHIP     , T_LOGICAL_AND , T_LOGICAL_OR      , T_LOGICAL_XOR         ,
         T_THROW         , T_GOTO        ,
     ];

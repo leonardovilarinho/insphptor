@@ -6,6 +6,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 use Insphptor\Storage\ClassesRepository;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ResultTable
 {
     public static function displayMetricsTable(OutputInterface $output, ClassesRepository $repository)

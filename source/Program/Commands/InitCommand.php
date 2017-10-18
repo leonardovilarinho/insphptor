@@ -9,6 +9,9 @@ use Symfony\Component\Console\Question\ChoiceQuestion;
 use Symfony\Component\Yaml\Yaml;
 use Insphptor\Program\Helpers\BoxObject;
 
+/**
+ * @codeCoverageIgnore
+ */
 class InitCommand extends InsphptorCommand
 {
     /**

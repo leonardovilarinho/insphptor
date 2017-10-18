@@ -1,35 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-   backupGlobals="false"
-   backupStaticAttributes="false"
-   bootstrap="./vendor/autoload.php"
-   colors="true"
-   convertErrorsToExceptions="true"
-   convertNoticesToExceptions="true"
-   convertWarningsToExceptions="true"
-   processIsolation="false"
-   stopOnFailure="false"
-   verbose="true"
+    bootstrap="vendor/autoload.php"
+    colors="true"
 >
 
-    <php>
-        <const name="RUNNING_PHPUNIT" value="true"/>
-    </php>
+    <testsuites>
+        <testsuite name="Insphptor Tests">
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
 
-   <testsuites>
-      <testsuite name="Insphptor Tests">
-         <directory suffix="Test.php">./tests</directory>
-      </testsuite>
-   </testsuites>
+    <filter>
+        <whitelist>
+            <directory suffix=".php">source</directory>
+        </whitelist>
+    </filter>
 
-   <filter>
-      <whitelist processUncoveredFilesFromWhitelist="true">
-         <directory suffix=".php">./source</directory>
-      </whitelist>
-   </filter>
-
-   <logging>
-      <log type="coverage-html" target="./coverage" lowUpperBound="50" highLowerBound="70"/>
-   </logging>
+    <logging>
+        <log type="coverage-html" target="./coverage" lowUpperBound="50" highLowerBound="70"/>
+    </logging>
 
 </phpunit>

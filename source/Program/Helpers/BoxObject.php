@@ -5,6 +5,9 @@ namespace Insphptor\Program\Helpers;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Helper\Table;
 
+/**
+ * @codeCoverageIgnore
+ */
 class BoxObject
 {
     public static function display(string $message, OutputInterface $output)

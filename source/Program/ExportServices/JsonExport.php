@@ -31,10 +31,17 @@ class JsonExport implements IExport
      */
     public function export(string $path, float $stars, string $alias = '')
     {
+        if (!file_exists($path)) {
+            mkdir($path);
+        }
+
         $json = $this->initializableJson($stars, $alias);
 
-        $progress = ProgressHelper::start($this->out, 'classes to json', $this->repository->count());
+        $step = ($this->repository->count() > 0 ) ? $this->repository->count() : 1;
 
+        $progress = ProgressHelper::start($this->out, 'classes to json', $step);
+
+        $json['classes'] = [];
         foreach (($this->repository)() as $class) {
             $json['classes'][] = $class->toArray();
             $progress->advance();

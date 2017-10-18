@@ -12,6 +12,9 @@ use Insphptor\Metrics\StarsMetric;
 use Insphptor\Program\Helpers\BoxObject;
 use Insphptor\Program\Config\Config;
 
+/**
+ * @codeCoverageIgnore
+ */
 class RunCommand extends InsphptorCommand
 {
     /**

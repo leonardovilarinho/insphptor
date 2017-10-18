@@ -7,6 +7,9 @@ use Insphptor\Analyzer\AnalyzedClass;
 use Insphptor\Storage\ClassesRepository;
 use Insphptor\Program\Helpers\ProgressHelper;
 
+/**
+ * @codeCoverageIgnore
+ */
 class FileManager
 {
     private $output;
