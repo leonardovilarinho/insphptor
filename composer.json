@@ -1,7 +1,8 @@
 {
     "name": "leonardovilarinho/insphptor",
     "type": "framework",
-    "license": "MITS",
+    "license": "GPL",
+    "version": "1.0.2",
     "authors": [
         {
             "name": "Leonardo Vilarinho",
