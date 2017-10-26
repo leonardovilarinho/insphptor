@@ -31,10 +31,6 @@ class JsonExport implements IExport
      */
     public function export(string $path, float $stars, string $alias = '')
     {
-        if (!file_exists($path)) {
-            mkdir($path);
-        }
-
         $json = $this->initializableJson($stars, $alias);
 
         $step = ($this->repository->count() > 0 ) ? $this->repository->count() : 1;

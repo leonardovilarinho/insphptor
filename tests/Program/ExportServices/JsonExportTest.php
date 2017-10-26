@@ -10,6 +10,12 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 
 class JsonExportTest extends TestBase
 {
+    
+    public function setUp()
+    {
+        mkdir(__DIR__.'/../../export/');
+    }
+    
     public function testExportEmptyClasses()
     {
         $output = new ConsoleOutput();
