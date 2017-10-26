@@ -58,8 +58,8 @@ class DevelopersMetric
                     unset($line[0]);
                     $line[1] = isset($line[1]) ? trim($line[1]) : 0;
                     $line[2] = isset($line[2]) ? trim($line[2]) : 0;
-                    self::$developers[$dev]['inserts']   += $line[1];
-                    self::$developers[$dev]['deletions'] += $line[2];
+                    self::$developers[$dev]['inserts']   += (int)$line[1];
+                    self::$developers[$dev]['deletions'] += (int)$line[2];
                 }
             }
             $progress->advance();
