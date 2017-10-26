@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "570c992ed5c8300688a7afefb5b30d67",
-    "content-hash": "e707e9b883d82e432178bf980a43cc69",
+    "hash": "1a66627b1ef2ea4f91e512791d3f7b2d",
+    "content-hash": "e7f9f64dbafe9c3e713102cdbd0e950a",
     "packages": [
         {
             "name": "duncan3dc/fork-helper",
