@@ -2,7 +2,18 @@
 <?php
 declare(strict_types = 1);
 
-require_once __DIR__.'/./vendor/autoload.php';
+$started = false;
+$autoloads = [__DIR__ . '/vendor/autoload.php', __DIR__ . '/../../autoload.php'];
+
+foreach ($autoloads as $autoload) {
+    if (file_exists($autoload)) {
+        require $autoload;
+        $started = true;
+        break;
+    }
+}
+if (!$started)
+    die('Please, run composer install.');
 
 require_once __DIR__.'/./source/globals.php';
 
