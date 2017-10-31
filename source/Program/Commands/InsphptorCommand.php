@@ -24,4 +24,18 @@ abstract class InsphptorCommand extends Command
         $greetInput = new ArrayInput($arguments);
         $command->run($greetInput, $output);
     }
+
+    protected function pathToView(string $view) : string
+    {
+        $view = config()['views'][$view];
+        $isLocal = false;
+        if ($view == 'insphptor-overview') {
+            $isLocal = true;
+            $view = __DIR__.'/../../../views/overview';
+        }
+
+        $view .= substr($view, 0, -1) == '/' ? '' : '/';
+
+        return ($isLocal ? '' : config()['project']) . $view;
+    }
 }

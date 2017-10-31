@@ -53,7 +53,6 @@ class RunCommand extends InsphptorCommand
 
     private function initializableCommand(OutputInterface $output)
     {
-        Config::instance();
         $output->writeln(APP_NAME);
         if (!$this->lock()) {
             throw new \Exception('The command is already running in another process');

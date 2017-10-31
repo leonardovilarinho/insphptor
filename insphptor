@@ -23,5 +23,9 @@ $application = new Application(APP_NAME);
 $application->add(new \Insphptor\Program\Commands\RunCommand);
 $application->add(new \Insphptor\Program\Commands\ExportCommand);
 $application->add(new \Insphptor\Program\Commands\InitCommand);
+$application->add(new \Insphptor\Program\Commands\StartCommand);
+$application->add(new \Insphptor\Program\Commands\CleanCommand);
+
+\Insphptor\Program\Config\Config::instance();
 
 $application->run();

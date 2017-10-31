@@ -50,23 +50,8 @@ class ExportCommand extends InsphptorCommand
         BoxObject::display(sprintf('The result was exported to %s/data', $path), $output);
 
         if ($input->getOption('open')) {
-            $output->writeln('Serving the result in <bg=blue;fg=white>http://localhost:8000</>');
-            exec('php -S 0.0.0.0:8000 -t ' . $path);
+            $this->call('start', $output);
         }
-    }
-
-    private function pathToView(string $view) : string
-    {
-        $view = config()['views'][$view];
-        $isLocal = false;
-        if ($view == 'insphptor-overview') {
-            $isLocal = true;
-            $view = __DIR__.'/../../../views/overview';
-        }
-
-        $view .= substr($view, 0, -1) == '/' ? '' : '/';
-
-        return ($isLocal ? '' : config()['project']) . $view;
     }
 
     private function askNameFromGeneration(InputInterface $input, OutputInterface $output)
