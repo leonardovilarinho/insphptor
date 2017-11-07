@@ -16,17 +16,16 @@ class Config extends Singleton
     /**
      * Initializable the color variable and get insphptor.yml project file, in end
      * optimize settings optionals.
-     * @return [type] [description]
      */
     protected function init()
     {
         $filename = getcwd() . '/insphptor.yml';
 
-        if (!file_exists($filename)) {
-            throw new \Exception('Insphptor YML file not found');
+        try {
+            @self::$config = Yaml::parse(file_get_contents($filename));
+        } catch (Exception $e) {
+            self::$config = [];
         }
-
-        self::$config = Yaml::parse(file_get_contents($filename));
         self::$config['project'] = getcwd();
         self::optimizeAllConfigurations();
 

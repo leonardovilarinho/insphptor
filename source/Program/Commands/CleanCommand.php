@@ -27,13 +27,8 @@ class CleanCommand extends InsphptorCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $view = $input->getArgument('view');
-
-        if (!isset(config()['views'][$view])) {
-            throw new \Exception(sprintf('View "%s" not found', $view));
-        }
-
         $path = $this->pathToView($view);
-        
+
         array_map(function ($file) use ($output) {
             $output->writeln('<fg=blue>Removing</> '.$file.' file.');
             unlink($file);

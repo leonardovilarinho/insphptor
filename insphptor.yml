@@ -1,13 +1,14 @@
-name: Insphptor
+name: Insphptor Project
 export: json
-git: 'yes'
+git: auto
 level: normal
-rank: '6'
+rank: 6
 hide:
     - interface
     - file
-    - trait
 only:
     - source
 views:
     overview: insphptor-overview
+
+

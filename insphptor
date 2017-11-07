@@ -26,6 +26,4 @@ $application->add(new \Insphptor\Program\Commands\InitCommand);
 $application->add(new \Insphptor\Program\Commands\StartCommand);
 $application->add(new \Insphptor\Program\Commands\CleanCommand);
 
-\Insphptor\Program\Config\Config::instance();
-
 $application->run();

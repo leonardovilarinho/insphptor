@@ -4,6 +4,7 @@ namespace Insphptor\Program\Commands;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Input\ArrayInput;
+use Insphptor\Program\Config\Config;
 
 /**
  * @codeCoverageIgnore
@@ -27,9 +28,10 @@ abstract class InsphptorCommand extends Command
 
     protected function pathToView(string $view) : string
     {
-        $view = config()['views'][$view];
+        Config::instance();
+        $view = isset(config()['views'][$view]) ? config()['views'][$view] : $view;
         $isLocal = false;
-        if ($view == 'insphptor-overview') {
+        if ($view == 'insphptor-overview' or $view == 'overview') {
             $isLocal = true;
             $view = __DIR__.'/../../../views/overview';
         }

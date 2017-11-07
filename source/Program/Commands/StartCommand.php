@@ -31,10 +31,6 @@ class StartCommand extends InsphptorCommand
         $port = $input->getOption('port');
         $port = $port != null ? $port : 8000;
 
-        if (!isset(config()['views'][$view])) {
-            throw new \Exception(sprintf('View "%s" not found', $view));
-        }
-
         $path = $this->pathToView($view);
         $output->writeln('Serving the result in <bg=blue;fg=white>http://localhost:'.$port.'</>');
         exec('php -S 0.0.0.0:'.$port.' -t ' . $path);

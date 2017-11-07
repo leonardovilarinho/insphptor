@@ -32,6 +32,7 @@ class RunCommand extends InsphptorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        Config::instance();
         $this->initializableCommand($output);
 
         $fileManager = new FileManager($output);
