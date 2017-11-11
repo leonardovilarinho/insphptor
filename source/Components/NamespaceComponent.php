@@ -15,7 +15,7 @@ class NamespaceComponent implements IComponent
         $isFind = false;
         foreach ($tokenize as $value) {
             if ($isFind and $value != ';') {
-                $val .= $value[1];
+                $val .= isset($value[1]) ? $value[1] : '';
             } elseif ($isFind and $value == ';') {
                 break;
             }

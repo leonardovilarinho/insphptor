@@ -15,7 +15,8 @@ class NameComponent implements IComponent
         $isFind = false;
         foreach ($tokenize as $value) {
             if ($isFind and $value[0] != T_WHITESPACE) {
-                $val .= isset($value[1]) ? $value[1] : '';
+                if(isset($value[1]))
+                    $val .= $value[1];
             } elseif ($val != '' and $value[0] == T_WHITESPACE) {
                 break;
             }

@@ -21,11 +21,14 @@ class Config extends Singleton
     {
         $filename = getcwd() . '/insphptor.yml';
 
-        try {
-            @self::$config = Yaml::parse(file_get_contents($filename));
-        } catch (Exception $e) {
+        if(!file_exists($filename) and !defined('IS_GLOBAL'))
+            throw new \Exception('insphptor.yml not found!');
+
+        if(file_exists($filename))
+            self::$config = Yaml::parse(file_get_contents($filename));
+        else
             self::$config = [];
-        }
+
         self::$config['project'] = getcwd();
         self::optimizeAllConfigurations();
 

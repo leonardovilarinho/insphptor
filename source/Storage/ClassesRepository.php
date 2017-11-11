@@ -49,10 +49,10 @@ class ClassesRepository extends RepositoryAndSingleton
         return $this->items;
     }
 
-    public function sortByStars() : array
+    public function sortByWeight() : array
     {
         usort($this->items, function ($a, $b) {
-            return $a->star > $b->star;
+            return $a->weight < $b->weight;
         });
 
         return $this->items;

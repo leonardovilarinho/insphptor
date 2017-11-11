@@ -27,6 +27,7 @@ class StartCommand extends InsphptorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        define('IS_GLOBAL', true);
         $view = $input->getArgument('view');
         $port = $input->getOption('port');
         $port = $port != null ? $port : 8000;

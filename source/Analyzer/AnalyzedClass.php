@@ -30,6 +30,7 @@ class AnalyzedClass
         unset($buffer);
 
         Analyzer::analyze($this);
+        $this->generateWeight();
     }
 
     /**
@@ -102,5 +103,13 @@ class AnalyzedClass
         }
 
         return $array;
+    }
+
+    private function generateWeight()
+    {
+        $total = 0;
+        foreach ($this->info['metrics'] as $value)
+            $total += $value;
+        $this->info['weight'] = number_format($total, 2);
     }
 }

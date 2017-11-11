@@ -29,9 +29,9 @@ class JsonExport implements IExport
      * @param  string|null $path view system export to
      * @param  string|null $alias alias from result generation
      */
-    public function export(string $path, float $stars, string $alias = '')
+    public function export(string $path, string $alias = '')
     {
-        $json = $this->initializableJson($stars, $alias);
+        $json = $this->initializableJson($alias);
 
         $step = ($this->repository->count() > 0 ) ? $this->repository->count() : 1;
 
@@ -50,14 +50,13 @@ class JsonExport implements IExport
         $this->saveInfoJson($path, $file);
     }
 
-    private function initializableJson(float $stars, string $alias)
+    private function initializableJson(string $alias)
     {
         return [
             'name'  => config()['name'],
             'date'  => date('Y-m-d H:i:s'),
             'alias' => $alias,
             'git'   => HAS_GIT,
-            'star'  => $stars,
             'devs'  => $this->developers
         ];
     }

@@ -34,6 +34,7 @@ class InitCommand extends InsphptorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        define('IS_GLOBAL', true);
         $this->input = $input;
         $this->output = $output;
         $this->helper = $this->getHelper('question');
@@ -65,14 +66,6 @@ class InitCommand extends InsphptorCommand
             'git',
             0,
             'auto'
-        );
-
-        $this->askChoice(
-            'What the evaluation level?',
-            ['newbie', 'normal', 'hardcore'],
-            'level',
-            1,
-            'normal'
         );
 
         $this->askSimple('How many results should Insphptor show?', '5', 'rank');

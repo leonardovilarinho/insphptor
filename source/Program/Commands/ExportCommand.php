@@ -3,7 +3,6 @@ namespace Insphptor\Program\Commands;
 
 use Insphptor\Program\ExportServices\JsonExport;
 use Insphptor\Metrics\DevelopersMetric;
-use Insphptor\Metrics\StarsMetric;
 use Insphptor\Program\Helpers\BoxObject;
 use Insphptor\Storage\ClassesRepository;
 use Symfony\Component\Console\Question\Question;
@@ -39,13 +38,11 @@ class ExportCommand extends InsphptorCommand
         if ($input->getOption('flag')) {
             $flag = $this->askNameFromGeneration($input, $output);
         }
-
-        $stars = StarsMetric::calculeProjectStars();
         $devs = DevelopersMetric::getDevelopers();
         $path = $this->pathToView($view);
 
         $export = new JsonExport(ClassesRepository::instance(), $devs, $output);
-        $export->export($path.'/data/', $stars, $flag);
+        $export->export($path.'/data/', $flag == null ? '' : $flag);
 
         BoxObject::display(sprintf('The result was exported to %s/data', $path), $output);
 

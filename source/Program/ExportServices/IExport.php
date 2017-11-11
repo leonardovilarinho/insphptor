@@ -9,5 +9,5 @@ interface IExport
 {
     public function __construct(ClassesRepository $repository, array $devs, OutputInterface $output);
 
-    public function export(string $path, float $stars, string $alias = '');
+    public function export(string $path, string $alias = '');
 }

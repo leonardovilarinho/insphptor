@@ -38,6 +38,6 @@ abstract class InsphptorCommand extends Command
 
         $view .= substr($view, 0, -1) == '/' ? '' : '/';
 
-        return ($isLocal ? '' : config()['project']) . $view;
+        return ($isLocal ? '' : config()['project']) . '/' . $view;
     }
 }

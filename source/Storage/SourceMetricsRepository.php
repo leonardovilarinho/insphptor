@@ -14,7 +14,6 @@ class SourceMetricsRepository extends Repository
         $this->items = [
             'size'          =>  \Insphptor\Metrics\SourceMetrics\SizeMetric::class,
             'complexity'    =>  \Insphptor\Metrics\SourceMetrics\ComplexityMetric::class,
-            //'encapsulation' =>  \Insphptor\Metrics\SourceMetrics\EncapsulationMetric::class,
             'efferent'      =>  \Insphptor\Metrics\SourceMetrics\EfferentMetric::class,
             'afferent'      =>  \Insphptor\Metrics\SourceMetrics\AfferentMetric::class,
             'cohesion'      =>  \Insphptor\Metrics\SourceMetrics\CohesionMetric::class,

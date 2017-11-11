@@ -32,7 +32,7 @@ abstract class Analyzer
     private static function generateComponents()
     {
         $components = new ComponentsRepository;
- 
+
         foreach ($components() as $name => $component) {
             $result = $component::find(self::$class->token);
             self::$class->pushAttribute($name, $result);

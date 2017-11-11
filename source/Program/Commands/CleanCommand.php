@@ -26,6 +26,7 @@ class CleanCommand extends InsphptorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        define('IS_GLOBAL', true);
         $view = $input->getArgument('view');
         $path = $this->pathToView($view);
 

@@ -14,10 +14,10 @@ class ResultTable
     public static function displayMetricsTable(OutputInterface $output, ClassesRepository $repository)
     {
         $table = new Table($output);
-        $table->setHeaders(['<fg=blue>Type</>', '<fg=blue>Name</>', '<fg=blue>Stars</>']);
+        $table->setHeaders(['<fg=blue>Type</>', '<fg=blue>Name</>', '<fg=blue>Weight</>']);
 
         $count = 0;
-        $result = $repository->sortByStars();
+        $result = $repository->sortByWeight();
 
         $lines = [];
         foreach ($result as $class) {
@@ -28,7 +28,7 @@ class ResultTable
             $lines[] = [
                 $class->type,
                 $class->namespace . '\\' . $class->name,
-                $class->star
+                $class->weight
             ];
             $count ++;
         }

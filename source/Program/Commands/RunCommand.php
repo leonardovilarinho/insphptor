@@ -8,7 +8,6 @@ use Insphptor\Storage\ClassesRepository;
 use Insphptor\Program\FileManager;
 use Insphptor\Program\ResultTable;
 use Insphptor\Metrics\DevelopersMetric;
-use Insphptor\Metrics\StarsMetric;
 use Insphptor\Program\Helpers\BoxObject;
 use Insphptor\Program\Config\Config;
 
@@ -38,13 +37,9 @@ class RunCommand extends InsphptorCommand
         $fileManager = new FileManager($output);
         $fileManager->storeAllFiles();
 
-        StarsMetric::calculeClassesStars();
         $repository = ClassesRepository::instance();
 
         $devs = DevelopersMetric::generate($output);
-
-        $stars = StarsMetric::calculeProjectStars();
-        BoxObject::display(sprintf('Your project have %1.1f stars', $stars), $output);
 
         ResultTable::displayMetricsTable($output, $repository);
         ResultTable::displayDevsTable($output, $devs);
