@@ -5,7 +5,7 @@ namespace Insphptor\Program\Config;
 use Insphptor\Patterns\Singleton;
 use Symfony\Component\Yaml\Yaml;
 
-class Config extends Singleton
+class Settings extends Singleton
 {
     /**
      * Array of global settings from console app, defined path, extensions and any

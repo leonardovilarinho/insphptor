@@ -29,7 +29,7 @@ class MethodsComponentTest extends TestBaseComponent
         $methods = $this->generateMethods('final');
         $this->assertTrue(count($methods) == 2);
         $this->assertEquals('myMethod', $methods[1]['name']);
-        $this->assertEquals('protected static', $methods[1]['visibility']);
+        $this->assertEquals('protected', $methods[1]['visibility']);
     }
 
     public function testTwoMethodsProtectedAndAbstractScope()
@@ -37,7 +37,7 @@ class MethodsComponentTest extends TestBaseComponent
         $methods = $this->generateMethods('trait');
         $this->assertTrue(count($methods) == 2);
         $this->assertEquals('myAbs', $methods[2]['name']);
-        $this->assertEquals('protected abstract', $methods[2]['visibility']);
+        $this->assertEquals('protected', $methods[2]['visibility']);
     }
     
     private function generateMethods(string $classname)

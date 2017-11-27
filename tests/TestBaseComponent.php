@@ -4,7 +4,7 @@ namespace Insphptor;
 
 use PHPUnit\Framework\TestCase;
 use Insphptor\Analyzer\AnalyzedClass;
-use Insphptor\Program\Config\Config;
+use Insphptor\Program\Config\Settings;
 
 class TestBaseComponent extends TestCase
 {
@@ -14,7 +14,7 @@ class TestBaseComponent extends TestCase
     protected function setUp()
     {
         require __DIR__.'/../source/globals.php';
-        Config::instance();
+        Settings::instance();
         $this->filename = __DIR__.'/pages/test1.php';
         $this->class = new AnalyzedClass($this->filename);
     }

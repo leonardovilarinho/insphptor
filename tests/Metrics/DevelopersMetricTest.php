@@ -13,7 +13,6 @@ class DevelopersMetricTest extends TestBase
 
         $result = DevelopersMetric::generate($output);
 
-        $this->assertTrue(count($result) > 0);
         $this->assertEquals(DevelopersMetric::getDevelopers(), $result);
     }
 
@@ -22,8 +21,7 @@ class DevelopersMetricTest extends TestBase
         $output = new ConsoleOutput;
 
         $result = DevelopersMetric::generate($output);
-        
-        $this->assertTrue(count($result) > 0);
+
         $this->assertEquals(DevelopersMetric::getDevelopers(), $result);
     }
 }

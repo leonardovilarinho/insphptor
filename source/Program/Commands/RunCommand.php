@@ -9,7 +9,7 @@ use Insphptor\Program\FileManager;
 use Insphptor\Program\ResultTable;
 use Insphptor\Metrics\DevelopersMetric;
 use Insphptor\Program\Helpers\BoxObject;
-use Insphptor\Program\Config\Config;
+use Insphptor\Program\Config\Settings;
 
 /**
  * @codeCoverageIgnore
@@ -31,7 +31,7 @@ class RunCommand extends InsphptorCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        Config::instance();
+        Settings::instance();
         $this->initializableCommand($output);
 
         $fileManager = new FileManager($output);

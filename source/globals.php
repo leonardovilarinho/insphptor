@@ -33,7 +33,7 @@ if (! defined('TAB')) {
 if (! function_exists('config')) {
     function config() : array
     {
-        return \Insphptor\Program\Config\Config::getConfig();
+        return \Insphptor\Program\Config\Settings::getConfig();
     }
 }
 // @codeCoverageIgnoreEnd
