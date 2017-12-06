@@ -1,6 +1,6 @@
 name: Insphptor Project
 export: json
-git: not
+git: auto
 level: normal
 rank: 6
 hide:

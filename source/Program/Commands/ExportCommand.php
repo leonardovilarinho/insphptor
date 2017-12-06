@@ -44,7 +44,7 @@ class ExportCommand extends InsphptorCommand
         $export = new JsonExport(ClassesRepository::instance(), $devs, $output);
         $export->export($path.'/data/', $flag == null ? '' : $flag);
 
-        BoxObject::display(sprintf('The result was exported to %s/data', $path), $output);
+        BoxObject::display('The result was exported!', $output);
 
         if ($input->getOption('open')) {
             $this->call('start', $output);

@@ -3,7 +3,7 @@
     "type": "framework",
     "license": "GPL-3.0",
     "minimum-stability": "stable",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "authors": [
         {
             "name": "Leonardo Vilarinho",
