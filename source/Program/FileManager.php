@@ -28,7 +28,13 @@ class FileManager
         $progress = ProgressHelper::start($this->output, 'files', count($files));
 
         foreach ($files as $file) {
-            $this->repository->pushClass(new AnalyzedClass($file->getRealPath()));
+            $class = new AnalyzedClass($file->getRealPath());
+            
+            if(!in_array($class->type, config()['hide'])) {
+                $class->calculateMetrics();
+                $this->repository->pushClass($class);
+            }
+            
             $progress->advance();
         }
 

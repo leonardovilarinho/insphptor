@@ -35,6 +35,7 @@ class ClassesRepository extends RepositoryAndSingleton
     public function removeClass(AnalyzedClass $class)
     {
         $index = array_search($class, $this->items);
+        echo 'Removendo ' . $class->type . ' ' . $index . '\n';
         if ($index !== false) {
             unset($this->items[$index]);
         }

@@ -9,6 +9,6 @@ hide:
 only:
     - source
 views:
-    overview: insphptor-overview
+    overview: ../overview
 
 

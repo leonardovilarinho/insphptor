@@ -29,7 +29,12 @@ class AnalyzedClass
         $this->info['methods'] = [];
         unset($buffer);
 
-        Analyzer::analyze($this);
+        Analyzer::generateComponents($this);
+    }
+
+    public function calculateMetrics()
+    {
+        Analyzer::calculateMetrics($this);
         $this->generateWeight();
     }
 
