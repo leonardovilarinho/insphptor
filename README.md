@@ -1,45 +1,46 @@
 # Insphptor
 
-This repository represent an micro framework for calculate metrics in PHP projects. We objective is increase from simple way the use of metrics to measure quality your software.
+This repository represent an micro framework for calculate PHP projects metrics. Our objective is to increase the use of metrics to measure quality in a simple way.
 
 ## Get started
 
-To started, run the Composer command:
+To get started, run the Composer command:
 
 ```shell
 composer global require leonardovilarinho/insphptor
 ```
 
-After, in your project directory, run the `insphptor run` command:
+Next, in your project directory, run the `insphptor init` command, to create insphptor settings file (insphptor.yml). Finally run `insphptor run:export -o` to calculate metrics and open in your browser.
 
-```shell
-insphptor run
+## Settings
+
+Use `insphptor.yml` file in root directory your projeto to configure the analyze.
+
 ```
-
-## Customize
-
-Add the `insphptor.yml` file in root from your php project, in him you can define follow options:
-
-```yaml
-
-# number of results displayed
-ranking: 5
-
-# format from export result
+name: Insphptor Project
 export: json
-
-# folders and files to insphptor ignore in analyze
-ignore:
-  - vendor
-  - tests
-  - coverage
-  - .phpintel
-
-# type of file hiden from result
+git: auto
+level: normal
+rank: 6
 hide:
-  - interface
-
-# file extensions to read and analyze
-extensions:
-  - php
+    - interface
+    - file
+only:
+    - source
+views:
+    overview: insphptor-overview
 ```
+
+## Commands
+
+- `insphptor init`: create insphptor.yml file based in your answers.
+- `insphptor run`: calculate metrics and display result in terminal.
+- `insphptor run:export`: calculate metricsm display result in terminal and export json file for view system.
+- `insphptor start`: server your projects result in browser.
+- `insphptor clean`: delet all data.
+
+### Options
+
+- `inphptor --help`: see list with all commands.
+- `inphptor run:export -o`: open result in grapic browser.
+- `inphptor run:export -f`: generate an alias for this result.
