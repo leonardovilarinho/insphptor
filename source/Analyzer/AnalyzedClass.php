@@ -115,6 +115,6 @@ class AnalyzedClass
         $total = 0;
         foreach ($this->info['metrics'] as $value)
             $total += $value;
-        $this->info['weight'] = number_format($total, 2);
+        $this->info['weight'] = (int)$total;
     }
 }
