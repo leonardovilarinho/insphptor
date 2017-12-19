@@ -9,7 +9,7 @@ if (!defined('APP_NAME')) {
 	  )  _   _ <fg=blue>  _ ( _   _ </> _)_ _   _
 	_(_ ) ) (  <fg=blue> )_) ) ) )_)</> (_ (_) )
 	        _) <fg=blue>(       (   </>
-	                                           v1.0.15
+	                                           v1.0.16
 	                            By <fg=blue>Leonardo Vilarinho</>'.PHP_EOL);
 }
 
