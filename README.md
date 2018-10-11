@@ -44,9 +44,3 @@ views:
 - `inphptor --help`: see list with all commands.
 - `inphptor run:export -o`: open result in grapic browser.
 - `inphptor run:export -f`: generate an alias for this result.
-
-_____ Português
-
-# Insphptor
-
-Este repositório representa uma microestrutura para calcular métricas de projetos PHP. Nosso objetivo é aumentar o uso de métricas para medir a qualidade de maneira simples.
